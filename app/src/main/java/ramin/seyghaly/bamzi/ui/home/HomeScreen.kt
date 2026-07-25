@@ -2,17 +2,10 @@ package ramin.seyghaly.bamzi.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Chat
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -22,10 +15,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Devices.NEXUS_9
 import androidx.compose.ui.tooling.preview.Devices.PIXEL_6
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
@@ -36,7 +29,6 @@ import ramin.seyghaly.bamzi.ui.components.*
 import ramin.seyghaly.bamzi.ui.theme.BackgroundLight
 import ramin.seyghaly.bamzi.ui.theme.OrangePrimary
 import ramin.seyghaly.bamzi.ui.theme.TextDark
-
 import androidx.compose.ui.graphics.vector.ImageVector
 
 @Composable
@@ -56,42 +48,96 @@ fun HomeScreenContent(
             topBar = { HomeHeader() },
             containerColor = BackgroundLight
         ) { paddingValues ->
-            LazyColumn(
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(6),
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues),
-                contentPadding = PaddingValues(bottom = 16.dp)
+                contentPadding = PaddingValues(bottom = 24.dp)
             ) {
-                item { HomeBanner(banners = uiState.banners) }
-
-                item {
-                    Spacer(modifier = Modifier.height(16.dp))
-                    QuickActionRow(actions = uiState.socialActions)
+                // Banner
+                item(key = "banner", span = { GridItemSpan(6) }) {
+                    Column {
+                        Spacer(modifier = Modifier.height(12.dp))
+                        HomeBanner(banners = uiState.banners)
+                    }
                 }
 
-                item {
+                // Social Actions
+                item(key = "social_actions", span = { GridItemSpan(6) }) {
+                    Column {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        QuickActionRow(actions = uiState.socialActions)
+                    }
+                }
+
+                // Group Games Section
+                item(key = "header_games", span = { GridItemSpan(6) }) {
                     SectionHeader(title = "بازی‌های گروهی")
-                    GamesGrid(items = uiState.games)
+                }
+                items(uiState.games, key = { it.id }, span = { GridItemSpan(3) }) { game ->
+                    GameCard(
+                        title = game.title,
+                        subtitle = game.about,
+                        icon = mapIcon(game.iconRes),
+                        gradientStart = Color(game.bgGradientStart),
+                        gradientEnd = Color(game.bgGradientEnd),
+                        modifier = Modifier.padding(horizontal = 8.dp)
+                    )
                 }
 
-                item {
+                // Quick Settings Section
+                item(key = "header_settings", span = { GridItemSpan(6) }) {
                     SectionHeader(title = "تنظیمات سریع بازی")
-                    ToolsGrid(items = uiState.quickActions)
+                }
+                items(uiState.quickActions, key = { it.id }, span = { GridItemSpan(2) }) { action ->
+                    ToolCard(
+                        title = action.title,
+                        icon = mapIcon(action.iconRes),
+                        gradientStart = Color(action.bgGradientStart),
+                        gradientEnd = Color(action.bgGradientEnd),
+                        modifier = Modifier.padding(horizontal = 4.dp)
+                    )
                 }
 
-                item {
+                // Other Tools Section
+                item(key = "header_tools", span = { GridItemSpan(6) }) {
                     SectionHeader(title = "ابزارهای دیگر")
-                    ToolsGrid(items = uiState.tools)
+                }
+                items(uiState.tools, key = { it.id }, span = { GridItemSpan(2) }) { tool ->
+                    ToolCard(
+                        title = tool.title,
+                        icon = mapIcon(tool.iconRes),
+                        gradientStart = Color(tool.bgGradientStart),
+                        gradientEnd = Color(tool.bgGradientEnd),
+                        modifier = Modifier.padding(horizontal = 4.dp)
+                    )
                 }
 
-                item {
+                // Data Management Section
+                item(key = "header_data", span = { GridItemSpan(6) }) {
                     SectionHeader(title = "مدیریت داده‌ها")
-                    DataManagementSection(items = uiState.dataActions)
+                }
+                items(uiState.dataActions, key = { it.id }, span = { GridItemSpan(3) }) { action ->
+                    GameCard(
+                        title = action.title,
+                        subtitle = action.about,
+                        icon = mapIcon(action.iconRes),
+                        gradientStart = Color(action.bgGradientStart),
+                        gradientEnd = Color(action.bgGradientEnd),
+                        modifier = Modifier.padding(horizontal = 8.dp)
+                    )
                 }
 
-                item {
+                // Recent Games Section
+                item(key = "header_recent", span = { GridItemSpan(6) }) {
                     SectionHeader(title = "آخرین بازی‌ها")
-                    RecentGamesSection(games = uiState.recentGames)
+                }
+                items(uiState.recentGames.take(3), key = { it.id }, span = { GridItemSpan(6) }) { game ->
+                    RecentGameCard(
+                        game = game,
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+                    )
                 }
             }
         }
@@ -127,93 +173,9 @@ fun QuickActionRow(actions: List<HomeItem>) {
 }
 
 @Composable
-fun GamesGrid(items: List<HomeItem>) {
-    Column(
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        items.chunked(2).forEach { rowItems ->
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                rowItems.forEach { item ->
-                    GameCard(
-                        title = item.title,
-                        subtitle = item.about,
-                        icon = mapIcon(item.iconRes),
-                        gradientStart = Color(item.bgGradientStart),
-                        gradientEnd = Color(item.bgGradientEnd),
-                        modifier = Modifier
-                            .weight(1f)
-                    )
-                }
-
-                if (rowItems.size == 1) {
-                    Spacer(modifier = Modifier.weight(1f))
-                }
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-        }
-    }
-}
-
-@Composable
-fun ToolsGrid(items: List<HomeItem>) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp)
-    ) {
-        items.chunked(3).forEach { rowItems ->
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                rowItems.forEach { item ->
-                    ToolCard(
-                        title = item.title,
-                        icon = mapIcon(item.iconRes),
-                        gradientStart = Color(item.bgGradientStart),
-                        gradientEnd = Color(item.bgGradientEnd),
-                        modifier = Modifier.weight(1f)
-                    )
-                }
-                
-                // Add empty spacers if row is not full
-                repeat(3 - rowItems.size) {
-                    Spacer(modifier = Modifier.weight(1f))
-                }
-            }
-            Spacer(modifier = Modifier.height(4.dp))
-        }
-    }
-}
-
-@Composable
-fun DataManagementSection(items: List<HomeItem>) {
-    GamesGrid(items = items)
-}
-
-@Composable
-fun RecentGamesSection(games: List<RecentGame>) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        games.take(3).forEach { game ->
-            RecentGameCard(game = game)
-        }
-    }
-}
-
-@Composable
-fun RecentGameCard(game: RecentGame) {
+fun RecentGameCard(game: RecentGame, modifier: Modifier = Modifier) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
@@ -343,7 +305,7 @@ fun HomeScreenPreview() {
             ),
             recentGames = listOf(
                 RecentGame("r1", "مافیا", "به اتمام رسیده", true, "hat", "۱۴۰۲/۰۵/۰۴"),
-                RecentGame("r2", "پانتومیم", "نا تمام مانده", false, "mask", "۱۴۰۲/۰۵/۰۳")
+                RecentGame("r2", "پانتومیم", "نا تمام مانده", false, "mask", "۱4۰۲/۰۵/۰۳")
             )
         )
     )
