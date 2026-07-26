@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.ui.graphics.graphicsLayer
 
 @Composable
@@ -35,15 +36,16 @@ fun GameCard(
             .padding(8.dp)
             .fillMaxWidth()
             .graphicsLayer {
-                // Optimization: Use graphicsLayer for shadow if possible, 
-                // but standard Card elevation is already optimized in M3.
-                // We keep Card for consistent M3 behavior but ensure static params.
                 clip = true
                 shape = RoundedCornerShape(16.dp)
             },
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.5.dp),
+        border = BorderStroke(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f)
+        ),
         onClick = onClick
     ) {
         Column(

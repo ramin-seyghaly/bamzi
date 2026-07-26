@@ -23,7 +23,7 @@ fun HomeHeader(
     Surface(
         modifier = modifier.fillMaxWidth(),
         color = MaterialTheme.colorScheme.surface,
-        shadowElevation = 8.dp
+        shadowElevation = 1.dp
     ) {
         Row(
             modifier = Modifier
