@@ -13,9 +13,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = OrangePrimary,
+    onPrimary = Color.Black,
+    secondary = OrangeLight,
+    onSecondary = Color.Black,
+    background = BackgroundDark,
+    surface = SurfaceDark,
+    onBackground = TextLight,
+    onSurface = TextLight,
+    surfaceVariant = Color(0xFF2C2C2C),
+    onSurfaceVariant = TextGreyDark
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -23,18 +30,19 @@ private val LightColorScheme = lightColorScheme(
     onPrimary = Color.White,
     secondary = OrangeLight,
     onSecondary = Color.White,
-    tertiary = Pink40,
     background = BackgroundLight,
     surface = SurfaceLight,
     onBackground = TextDark,
-    onSurface = TextDark
+    onSurface = TextDark,
+    surfaceVariant = Color(0xFFF5F5F5),
+    onSurfaceVariant = TextGrey
 )
 
 @Composable
 fun BamziTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false, // Set to false to prioritize brand colors
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

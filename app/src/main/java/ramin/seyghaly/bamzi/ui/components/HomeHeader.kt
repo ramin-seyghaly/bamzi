@@ -8,11 +8,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ramin.seyghaly.bamzi.ui.theme.OrangePrimary
+import ramin.seyghaly.bamzi.R
 
 @Composable
 fun HomeHeader(
@@ -22,7 +22,7 @@ fun HomeHeader(
 ) {
     Surface(
         modifier = modifier.fillMaxWidth(),
-        color = Color.White, // Using solid color for shadow to be visible
+        color = MaterialTheme.colorScheme.surface,
         shadowElevation = 8.dp
     ) {
         Row(
@@ -37,22 +37,22 @@ fun HomeHeader(
                 Icon(
                     imageVector = Icons.Default.Settings,
                     contentDescription = "Settings",
-                    tint = Color.Gray
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
 
             Text(
-                text = "گیم‌هاب",
+                text = stringResource(R.string.game_hub),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = OrangePrimary
+                color = MaterialTheme.colorScheme.primary
             )
 
             IconButton(onClick = onNotificationsClick) {
                 Icon(
                     imageVector = Icons.Default.Notifications,
                     contentDescription = "Notifications",
-                    tint = Color.Gray
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }

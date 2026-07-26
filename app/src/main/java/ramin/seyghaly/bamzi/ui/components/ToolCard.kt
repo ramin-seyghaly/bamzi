@@ -4,24 +4,18 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ramin.seyghaly.bamzi.ui.theme.OrangePrimary
-import ramin.seyghaly.bamzi.ui.theme.TextDark
-
-import androidx.compose.ui.graphics.Brush
 
 @Composable
 fun ToolCard(
@@ -37,7 +31,7 @@ fun ToolCard(
             .padding(4.dp)
             .size(width = 110.dp, height = 100.dp),
         shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         onClick = onClick
     ) {
@@ -74,7 +68,7 @@ fun ToolCard(
             Text(
                 text = title,
                 fontSize = 11.sp,
-                color = TextDark,
+                color = MaterialTheme.colorScheme.onSurface,
                 maxLines = 1,
                 textAlign = TextAlign.Center
             )

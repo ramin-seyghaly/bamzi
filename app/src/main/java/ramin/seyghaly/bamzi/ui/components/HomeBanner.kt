@@ -6,8 +6,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -46,6 +45,7 @@ fun HomeBanner(
             .height(200.dp)
             .padding(horizontal = 16.dp, vertical = 8.dp),
         shape = RoundedCornerShape(24.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
@@ -59,7 +59,7 @@ fun HomeBanner(
                     contentDescription = "Banner ${page + 1}",
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.LightGray),
+                        .background(MaterialTheme.colorScheme.surfaceVariant),
                     contentScale = ContentScale.Crop
                 )
             }
@@ -72,7 +72,11 @@ fun HomeBanner(
                 horizontalArrangement = Arrangement.spacedBy(6.dp)
             ) {
                 repeat(banners.size) { index ->
-                    val color = if (pagerState.currentPage == index) Color.White else Color.White.copy(alpha = 0.5f)
+                    val color = if (pagerState.currentPage == index) {
+                        Color.White
+                    } else {
+                        Color.White.copy(alpha = 0.5f)
+                    }
                     Box(
                         modifier = Modifier
                             .size(8.dp)
