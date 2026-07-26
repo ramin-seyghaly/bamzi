@@ -18,6 +18,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+import androidx.compose.ui.graphics.graphicsLayer
+
 @Composable
 fun GameCard(
     title: String,
@@ -31,7 +33,14 @@ fun GameCard(
     Card(
         modifier = modifier
             .padding(8.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .graphicsLayer {
+                // Optimization: Use graphicsLayer for shadow if possible, 
+                // but standard Card elevation is already optimized in M3.
+                // We keep Card for consistent M3 behavior but ensure static params.
+                clip = true
+                shape = RoundedCornerShape(16.dp)
+            },
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
@@ -43,17 +52,17 @@ fun GameCard(
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            val brush = remember(gradientStart, gradientEnd) {
+                Brush.linearGradient(
+                    colors = listOf(gradientStart, gradientEnd)
+                )
+            }
+            
             Box(
                 modifier = Modifier
                     .size(64.dp)
                     .clip(CircleShape)
-                    .background(
-                        brush = remember(gradientStart, gradientEnd) {
-                            Brush.linearGradient(
-                                colors = listOf(gradientStart, gradientEnd)
-                            )
-                        }
-                    ),
+                    .background(brush = brush),
                 contentAlignment = Alignment.Center
             ) {
                 if (icon != null) {

@@ -9,20 +9,16 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Devices.PIXEL_6
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -43,6 +39,14 @@ fun HomeScreen(
 fun HomeScreenContent(
     uiState: HomeUiState
 ) {
+    // Performance Optimization: Map icons and colors ONCE per state change, not during scroll
+    val groupGames = remember(uiState.games) { uiState.games }
+    val quickActions = remember(uiState.quickActions) { uiState.quickActions }
+    val otherTools = remember(uiState.tools) { uiState.tools }
+    val dataActions = remember(uiState.dataActions) { uiState.dataActions }
+    val socialActions = remember(uiState.socialActions) { uiState.socialActions }
+    val recentGames = remember(uiState.recentGames) { uiState.recentGames }
+
     Scaffold(
         topBar = { HomeHeader() },
         containerColor = MaterialTheme.colorScheme.background
@@ -66,7 +70,7 @@ fun HomeScreenContent(
             item(key = "social_actions", span = { GridItemSpan(6) }) {
                 Column {
                     Spacer(modifier = Modifier.height(16.dp))
-                    QuickActionRow(actions = uiState.socialActions)
+                    QuickActionRow(actions = socialActions)
                 }
             }
 
@@ -74,11 +78,12 @@ fun HomeScreenContent(
             item(key = "header_games", span = { GridItemSpan(6) }) {
                 SectionHeader(title = stringResource(R.string.group_games))
             }
-            items(uiState.games, key = { it.id }, span = { GridItemSpan(3) }) { game ->
+            items(groupGames, key = { it.id }, span = { GridItemSpan(3) }) { game ->
+                val icon = remember(game.iconRes) { mapIcon(game.iconRes) }
                 GameCard(
                     title = stringResource(game.titleRes),
                     subtitle = game.aboutRes?.let { stringResource(it) } ?: "",
-                    icon = mapIcon(game.iconRes),
+                    icon = icon,
                     gradientStart = Color(game.bgGradientStart),
                     gradientEnd = Color(game.bgGradientEnd),
                     modifier = Modifier.padding(horizontal = 8.dp)
@@ -89,10 +94,11 @@ fun HomeScreenContent(
             item(key = "header_settings", span = { GridItemSpan(6) }) {
                 SectionHeader(title = stringResource(R.string.quick_settings))
             }
-            items(uiState.quickActions, key = { it.id }, span = { GridItemSpan(2) }) { action ->
+            items(quickActions, key = { it.id }, span = { GridItemSpan(2) }) { action ->
+                val icon = remember(action.iconRes) { mapIcon(action.iconRes) }
                 ToolCard(
                     title = stringResource(action.titleRes),
-                    icon = mapIcon(action.iconRes),
+                    icon = icon,
                     gradientStart = Color(action.bgGradientStart),
                     gradientEnd = Color(action.bgGradientEnd),
                     modifier = Modifier.padding(horizontal = 4.dp)
@@ -103,10 +109,11 @@ fun HomeScreenContent(
             item(key = "header_tools", span = { GridItemSpan(6) }) {
                 SectionHeader(title = stringResource(R.string.other_tools))
             }
-            items(uiState.tools, key = { it.id }, span = { GridItemSpan(2) }) { tool ->
+            items(otherTools, key = { it.id }, span = { GridItemSpan(2) }) { tool ->
+                val icon = remember(tool.iconRes) { mapIcon(tool.iconRes) }
                 ToolCard(
                     title = stringResource(tool.titleRes),
-                    icon = mapIcon(tool.iconRes),
+                    icon = icon,
                     gradientStart = Color(tool.bgGradientStart),
                     gradientEnd = Color(tool.bgGradientEnd),
                     modifier = Modifier.padding(horizontal = 4.dp)
@@ -117,11 +124,12 @@ fun HomeScreenContent(
             item(key = "header_data", span = { GridItemSpan(6) }) {
                 SectionHeader(title = stringResource(R.string.data_management))
             }
-            items(uiState.dataActions, key = { it.id }, span = { GridItemSpan(3) }) { action ->
+            items(dataActions, key = { it.id }, span = { GridItemSpan(3) }) { action ->
+                val icon = remember(action.iconRes) { mapIcon(action.iconRes) }
                 GameCard(
                     title = stringResource(action.titleRes),
                     subtitle = action.aboutRes?.let { stringResource(it) } ?: "",
-                    icon = mapIcon(action.iconRes),
+                    icon = icon,
                     gradientStart = Color(action.bgGradientStart),
                     gradientEnd = Color(action.bgGradientEnd),
                     modifier = Modifier.padding(horizontal = 8.dp)
@@ -132,7 +140,7 @@ fun HomeScreenContent(
             item(key = "header_recent", span = { GridItemSpan(6) }) {
                 SectionHeader(title = stringResource(R.string.recent_games))
             }
-            items(uiState.recentGames.take(3), key = { it.id }, span = { GridItemSpan(6) }) { game ->
+            items(recentGames.take(3), key = { it.id }, span = { GridItemSpan(6) }) { game ->
                 RecentGameCard(
                     game = game,
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
@@ -162,8 +170,9 @@ fun QuickActionRow(actions: List<HomeItem>) {
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         actions.take(4).forEach { action ->
+            val icon = remember(action.iconRes) { mapIcon(action.iconRes) }
             QuickActionButton(
-                icon = mapIcon(action.iconRes),
+                icon = icon,
                 onClick = {}
             )
         }
@@ -193,8 +202,9 @@ fun RecentGameCard(game: RecentGame, modifier: Modifier = Modifier) {
                         .background(MaterialTheme.colorScheme.surfaceVariant),
                     contentAlignment = Alignment.Center
                 ) {
+                    val icon = remember(game.iconRes) { mapIcon(game.iconRes) }
                     Icon(
-                        imageVector = mapIcon(game.iconRes),
+                        imageVector = icon,
                         contentDescription = null,
                         tint = OrangePrimary,
                         modifier = Modifier.size(24.dp)

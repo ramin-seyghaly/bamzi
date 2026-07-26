@@ -17,6 +17,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.delay
 
 @Composable
@@ -27,9 +29,10 @@ fun HomeBanner(
     if (banners.isEmpty()) return
 
     val pagerState = rememberPagerState(pageCount = { banners.size })
+    val context = LocalContext.current
 
     // Auto-slide effect
-    LaunchedEffect(Unit) {
+    LaunchedEffect(banners.size) {
         while (true) {
             delay(3000L)
             if (!pagerState.isScrollInProgress) {
@@ -55,7 +58,10 @@ fun HomeBanner(
                 beyondViewportPageCount = 1
             ) { page ->
                 AsyncImage(
-                    model = banners[page],
+                    model = ImageRequest.Builder(context)
+                        .data(banners[page])
+                        .crossfade(true)
+                        .build(),
                     contentDescription = "Banner ${page + 1}",
                     modifier = Modifier
                         .fillMaxSize()

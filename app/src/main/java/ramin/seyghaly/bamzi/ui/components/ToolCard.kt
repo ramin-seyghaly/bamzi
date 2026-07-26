@@ -17,6 +17,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+import androidx.compose.ui.graphics.graphicsLayer
+
 @Composable
 fun ToolCard(
     title: String,
@@ -29,7 +31,11 @@ fun ToolCard(
     Card(
         modifier = modifier
             .padding(4.dp)
-            .size(width = 110.dp, height = 100.dp),
+            .size(width = 110.dp, height = 100.dp)
+            .graphicsLayer {
+                clip = true
+                shape = RoundedCornerShape(12.dp)
+            },
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
@@ -40,17 +46,17 @@ fun ToolCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            val brush = remember(gradientStart, gradientEnd) {
+                Brush.linearGradient(
+                    colors = listOf(gradientStart, gradientEnd)
+                )
+            }
+            
             Box(
                 modifier = Modifier
                     .size(40.dp)
                     .clip(CircleShape)
-                    .background(
-                        brush = remember(gradientStart, gradientEnd) {
-                            Brush.linearGradient(
-                                colors = listOf(gradientStart, gradientEnd)
-                            )
-                        }
-                    ),
+                    .background(brush = brush),
                 contentAlignment = Alignment.Center
             ) {
                 if (icon != null) {
