@@ -11,11 +11,13 @@
     <string name="spy">Spy</string>
     <string name="pantomime">Pantomime</string>
     <string name="mountain">Mountain</string>
+    <string name="truth_dare">Truth or Dare</string>
 
     <string name="mafia_about">Group game in team format</string>
     <string name="spy_about">Group game in individual format</string>
     <string name="pantomime_about">High movement</string>
     <string name="mountain_about">Fun and entertaining</string>
+    <string name="truth_dare_about">Mysterious and exciting</string>
 
     <string name="team_creation">Create Team</string>
     <string name="player_creation">Create Player</string>

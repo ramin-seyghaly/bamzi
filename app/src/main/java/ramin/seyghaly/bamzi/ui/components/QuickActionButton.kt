@@ -1,5 +1,6 @@
 package ramin.seyghaly.bamzi.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -27,7 +28,8 @@ fun QuickActionButton(
         modifier = modifier.size(56.dp),
         shape = CircleShape,
         color = containerColor,
-        shadowElevation = 4.dp
+        shadowElevation = 2.dp,
+        border = BorderStroke(1.dp, Color.Black.copy(alpha = 0.05f))
     ) {
         IconButton(onClick = onClick) {
             Icon(

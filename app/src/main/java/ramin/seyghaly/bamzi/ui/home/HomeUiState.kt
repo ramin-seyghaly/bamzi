@@ -27,7 +27,7 @@ data class HomeItem(
     @StringRes val titleRes: Int,
     @StringRes val aboutRes: Int?,
     val iconRes: String,
-    val bgGradientStart: Int,
-    val bgGradientEnd: Int,
+    val iconColor: Long,
+    val iconBgColor: Long,
     val enable: Boolean
 )

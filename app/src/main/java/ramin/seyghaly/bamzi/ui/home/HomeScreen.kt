@@ -16,8 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.tooling.preview.Devices.PIXEL_6
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -57,7 +60,9 @@ fun HomeScreenContent(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues),
-            contentPadding = PaddingValues(bottom = 24.dp)
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 24.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             // Banner
             item(key = "banner", span = { GridItemSpan(6) }) {
@@ -67,17 +72,14 @@ fun HomeScreenContent(
                 }
             }
 
-            // Social Actions
             item(key = "social_actions", span = { GridItemSpan(6) }) {
                 Column {
-                    Spacer(modifier = Modifier.height(16.dp))
                     QuickActionRow(actions = socialActions)
                 }
             }
 
-            // Group Games Section
             item(key = "header_games", span = { GridItemSpan(6) }) {
-                SectionHeader(title = stringResource(R.string.group_games))
+                SectionHeader(title = stringResource(R.string.group_games), showPadding = false)
             }
             items(groupGames, key = { it.id }, span = { GridItemSpan(3) }) { game ->
                 val icon = remember(game.iconRes) { mapIcon(game.iconRes) }
@@ -85,45 +87,42 @@ fun HomeScreenContent(
                     title = stringResource(game.titleRes),
                     subtitle = game.aboutRes?.let { stringResource(it) } ?: "",
                     icon = icon,
-                    gradientStart = Color(game.bgGradientStart),
-                    gradientEnd = Color(game.bgGradientEnd),
-                    modifier = Modifier.padding(horizontal = 8.dp)
+                    iconColor = Color(game.iconColor),
+                    iconBgColor = Color(game.iconBgColor),
+                    modifier = Modifier
                 )
             }
 
-            // Quick Settings Section
             item(key = "header_settings", span = { GridItemSpan(6) }) {
-                SectionHeader(title = stringResource(R.string.quick_settings))
+                SectionHeader(title = stringResource(R.string.quick_settings), showPadding = false)
             }
             items(quickActions, key = { it.id }, span = { GridItemSpan(2) }) { action ->
                 val icon = remember(action.iconRes) { mapIcon(action.iconRes) }
                 ToolCard(
                     title = stringResource(action.titleRes),
                     icon = icon,
-                    gradientStart = Color(action.bgGradientStart),
-                    gradientEnd = Color(action.bgGradientEnd),
-                    modifier = Modifier.padding(horizontal = 4.dp)
+                    iconColor = Color(action.iconColor),
+                    iconBgColor = Color(action.iconBgColor),
+                    modifier = Modifier
                 )
             }
 
-            // Other Tools Section
             item(key = "header_tools", span = { GridItemSpan(6) }) {
-                SectionHeader(title = stringResource(R.string.other_tools))
+                SectionHeader(title = stringResource(R.string.other_tools), showPadding = false)
             }
             items(otherTools, key = { it.id }, span = { GridItemSpan(2) }) { tool ->
                 val icon = remember(tool.iconRes) { mapIcon(tool.iconRes) }
                 ToolCard(
                     title = stringResource(tool.titleRes),
                     icon = icon,
-                    gradientStart = Color(tool.bgGradientStart),
-                    gradientEnd = Color(tool.bgGradientEnd),
-                    modifier = Modifier.padding(horizontal = 4.dp)
+                    iconColor = Color(tool.iconColor),
+                    iconBgColor = Color(tool.iconBgColor),
+                    modifier = Modifier
                 )
             }
 
-            // Data Management Section
             item(key = "header_data", span = { GridItemSpan(6) }) {
-                SectionHeader(title = stringResource(R.string.data_management))
+                SectionHeader(title = stringResource(R.string.data_management), showPadding = false)
             }
             items(dataActions, key = { it.id }, span = { GridItemSpan(3) }) { action ->
                 val icon = remember(action.iconRes) { mapIcon(action.iconRes) }
@@ -131,20 +130,19 @@ fun HomeScreenContent(
                     title = stringResource(action.titleRes),
                     subtitle = action.aboutRes?.let { stringResource(it) } ?: "",
                     icon = icon,
-                    gradientStart = Color(action.bgGradientStart),
-                    gradientEnd = Color(action.bgGradientEnd),
-                    modifier = Modifier.padding(horizontal = 8.dp)
+                    iconColor = Color(action.iconColor),
+                    iconBgColor = Color(action.iconBgColor),
+                    modifier = Modifier
                 )
             }
 
-            // Recent Games Section
             item(key = "header_recent", span = { GridItemSpan(6) }) {
-                SectionHeader(title = stringResource(R.string.recent_games))
+                SectionHeader(title = stringResource(R.string.recent_games), showPadding = false)
             }
             items(recentGames.take(3), key = { it.id }, span = { GridItemSpan(6) }) { game ->
                 RecentGameCard(
                     game = game,
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+                    modifier = Modifier
                 )
             }
         }
@@ -152,13 +150,21 @@ fun HomeScreenContent(
 }
 
 @Composable
-fun SectionHeader(title: String) {
+fun SectionHeader(title: String, showPadding: Boolean = true) {
     Text(
         text = title,
-        modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 8.dp),
-        fontSize = 18.sp,
-        fontWeight = FontWeight.Bold,
-        color = MaterialTheme.colorScheme.onBackground
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                start = if (showPadding) 16.dp else 0.dp,
+                end = if (showPadding) 16.dp else 0.dp,
+                top = 24.dp,
+                bottom = 12.dp
+            ),
+        fontSize = 22.sp,
+        fontWeight = FontWeight.ExtraBold,
+        color = MaterialTheme.colorScheme.onBackground,
+        textAlign = TextAlign.Start // Will be Right in RTL
     )
 }
 
@@ -166,15 +172,16 @@ fun SectionHeader(title: String) {
 fun QuickActionRow(actions: List<HomeItem>) {
     Row(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.SpaceEvenly
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center
     ) {
-        actions.take(4).forEach { action ->
+        actions.forEach { action ->
             val icon = remember(action.iconRes) { mapIcon(action.iconRes) }
             QuickActionButton(
                 icon = icon,
-                onClick = {}
+                contentColor = Color(action.iconColor),
+                onClick = {},
+                modifier = Modifier.padding(horizontal = 8.dp)
             )
         }
     }
@@ -182,14 +189,15 @@ fun QuickActionRow(actions: List<HomeItem>) {
 
 @Composable
 fun RecentGameCard(game: RecentGame, modifier: Modifier = Modifier) {
+    val isProgress = !game.isFinished
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        elevation = CardDefaults.cardElevation(defaultElevation = 0.5.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = if (isProgress) 4.dp else 1.dp),
         border = BorderStroke(
-            width = 1.dp,
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f)
+            width = if (isProgress) 2.dp else 1.dp,
+            color = if (isProgress) Color(0xFF0056B3) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f)
         )
     ) {
         Row(
@@ -200,18 +208,21 @@ fun RecentGameCard(game: RecentGame, modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
+                val iconColor = if (game.iconRes == "mask") Color(0xFF4A90E2) else Color(0xFFE57373)
+                val iconBg = if (game.iconRes == "mask") Color(0xFFE3F2FD) else Color(0xFFFFEBEE)
+                
                 Box(
                     modifier = Modifier
                         .size(40.dp)
                         .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.surfaceVariant),
+                        .background(iconBg),
                     contentAlignment = Alignment.Center
                 ) {
                     val icon = remember(game.iconRes) { mapIcon(game.iconRes) }
                     Icon(
                         imageVector = icon,
                         contentDescription = null,
-                        tint = OrangePrimary,
+                        tint = iconColor,
                         modifier = Modifier.size(24.dp)
                     )
                 }
@@ -233,12 +244,12 @@ fun RecentGameCard(game: RecentGame, modifier: Modifier = Modifier) {
                 }
             }
 
-            if (!game.isFinished) {
+            if (isProgress) {
                 Button(
                     onClick = { },
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
                     shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = OrangePrimary)
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0056B3))
                 ) {
                     Text(text = stringResource(R.string.continue_game), fontSize = 12.sp, fontWeight = FontWeight.Bold)
                 }
@@ -269,6 +280,7 @@ fun mapIcon(iconName: String): ImageVector {
         "dice" -> Icons.Default.Casino
         "coin" -> Icons.Default.MonetizationOn
         "schedule" -> Icons.Default.Schedule
+        "truth_dare" -> Icons.Default.QuestionAnswer
         "whatsapp" -> Icons.Default.Call
         "telegram" -> Icons.AutoMirrored.Filled.Send
         "youtube" -> Icons.Default.PlayCircle
@@ -281,25 +293,27 @@ fun mapIcon(iconName: String): ImageVector {
 @Preview(showBackground = true, device = PIXEL_6, locale = "fa")
 @Composable
 fun HomeScreenFaPreview() {
-    BamziTheme {
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+        BamziTheme {
         HomeScreenContent(
             uiState = HomeUiState().copy(
                 games = listOf(
-                    HomeItem("1", R.string.mafia, R.string.mafia_about, "hat", 0xFFE57373.toInt(), 0xFFC62828.toInt(), true),
-                    HomeItem("2", R.string.spy, R.string.spy_about, "eye", 0xFF9E9E9E.toInt(), 0xFF424242.toInt(), true)
+                    HomeItem("1", R.string.mafia, R.string.mafia_about, "hat", 0xFFE57373L, 0xFFFFEBEEL, true),
+                    HomeItem("2", R.string.spy, R.string.spy_about, "eye", 0xFF757575L, 0xFFF5F5F5L, true),
+                    HomeItem("5", R.string.truth_dare, R.string.truth_dare_about, "truth_dare", 0xFFFF8A65L, 0xFFFFF3E0L, true)
                 ),
                 banners = listOf(""),
                 socialActions = listOf(
-                    HomeItem("s1", R.string.whatsapp, null, "whatsapp", 0xFF4CAF50.toInt(), 0xFF2E7D32.toInt(), true)
+                    HomeItem("s1", R.string.whatsapp, null, "whatsapp", 0xFF757575L, 0xFFF5F5F5L, true)
                 ),
                 quickActions = listOf(
-                    HomeItem("q1", R.string.team_creation, null, "group_add", 0xFF64B5F6.toInt(), 0xFF1976D2.toInt(), true)
+                    HomeItem("q1", R.string.team_creation, null, "group_add", 0xFF4A90E2L, 0xFFE3F2FDL, true)
                 ),
                 tools = listOf(
-                    HomeItem("t1", R.string.leaderboard, null, "leaderboard", 0xFFFFB74D.toInt(), 0xFFF57C00.toInt(), true)
+                    HomeItem("t1", R.string.leaderboard, null, "leaderboard", 0xFFFF8A65L, 0xFFFFF3E0L, true)
                 ),
                 dataActions = listOf(
-                    HomeItem("d1", R.string.import_db, null, "download", 0xFFBBDEFB.toInt(), 0xFF90CAF9.toInt(), true)
+                    HomeItem("d1", R.string.import_db, null, "download", 0xFF4A90E2L, 0xFFE3F2FDL, true)
                 ),
                 recentGames = listOf(
                     RecentGame("r1", R.string.mafia, R.string.finished, true, "hat", "۱۴۰۲/۰۵/۰۴")
@@ -307,6 +321,7 @@ fun HomeScreenFaPreview() {
             )
         )
     }
+}
 }
 
 @Preview(showBackground = true, device = PIXEL_6, locale = "en", uiMode = android.content.res.Configuration.UI_MODE_NIGHT_YES)
@@ -316,21 +331,22 @@ fun HomeScreenEnDarkPreview() {
         HomeScreenContent(
             uiState = HomeUiState().copy(
                 games = listOf(
-                    HomeItem("1", R.string.mafia, R.string.mafia_about, "hat", 0xFFE57373.toInt(), 0xFFC62828.toInt(), true),
-                    HomeItem("2", R.string.spy, R.string.spy_about, "eye", 0xFF9E9E9E.toInt(), 0xFF424242.toInt(), true)
+                    HomeItem("1", R.string.mafia, R.string.mafia_about, "hat", 0xFFE57373L, 0xFFFFEBEEL, true),
+                    HomeItem("2", R.string.spy, R.string.spy_about, "eye", 0xFF757575L, 0xFFF5F5F5L, true),
+                    HomeItem("5", R.string.truth_dare, R.string.truth_dare_about, "truth_dare", 0xFFFF8A65L, 0xFFFFF3E0L, true)
                 ),
                 banners = listOf(""),
                 socialActions = listOf(
-                    HomeItem("s1", R.string.whatsapp, null, "whatsapp", 0xFF4CAF50.toInt(), 0xFF2E7D32.toInt(), true)
+                    HomeItem("s1", R.string.whatsapp, null, "whatsapp", 0xFF757575L, 0xFFF5F5F5L, true)
                 ),
                 quickActions = listOf(
-                    HomeItem("q1", R.string.team_creation, null, "group_add", 0xFF64B5F6.toInt(), 0xFF1976D2.toInt(), true)
+                    HomeItem("q1", R.string.team_creation, null, "group_add", 0xFF4A90E2L, 0xFFE3F2FDL, true)
                 ),
                 tools = listOf(
-                    HomeItem("t1", R.string.leaderboard, null, "leaderboard", 0xFFFFB74D.toInt(), 0xFFF57C00.toInt(), true)
+                    HomeItem("t1", R.string.leaderboard, null, "leaderboard", 0xFFFF8A65L, 0xFFFFF3E0L, true)
                 ),
                 dataActions = listOf(
-                    HomeItem("d1", R.string.import_db, null, "download", 0xFFBBDEFB.toInt(), 0xFF90CAF9.toInt(), true)
+                    HomeItem("d1", R.string.import_db, null, "download", 0xFF4A90E2L, 0xFFE3F2FDL, true)
                 ),
                 recentGames = listOf(
                     RecentGame("r1", R.string.mafia, R.string.finished, true, "hat", "2024/05/04")

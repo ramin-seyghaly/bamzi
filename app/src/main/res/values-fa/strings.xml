@@ -11,11 +11,13 @@
     <string name="spy">جاسوس</string>
     <string name="pantomime">پانتومیم</string>
     <string name="mountain">تپه ندیده</string>
+    <string name="truth_dare">جرات یا حقیقت</string>
 
     <string name="mafia_about">بازی گروهی در قالب تیمی</string>
     <string name="spy_about">بازی گروهی در قالب انفرادی</string>
     <string name="pantomime_about">پر حرکت</string>
     <string name="mountain_about">فان و سرگرم کننده</string>
+    <string name="truth_dare_about">معمایی و هیجان انگیز</string>
 
     <string name="team_creation">ساخت تیم</string>
     <string name="player_creation">ساخت بازیکن</string>

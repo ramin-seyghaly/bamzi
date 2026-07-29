@@ -6,6 +6,19 @@ import androidx.compose.ui.graphics.Color
 val OrangePrimary = Color(0xFFF58F29)
 val OrangeLight = Color(0xFFF9B872)
 
+// UI Component Colors (Redesign)
+val BlueIcon = Color(0xFF4A90E2)
+val BlueBg = Color(0xFFE3F2FD)
+val RedIcon = Color(0xFFE57373)
+val RedBg = Color(0xFFFFEBEE)
+val OrangeIcon = Color(0xFFFF8A65)
+val OrangeBg = Color(0xFFFFF3E0)
+val PurpleIcon = Color(0xFF9575CD)
+val PurpleBg = Color(0xFFF3E5F5)
+val GreyIcon = Color(0xFF757575)
+val GreyBg = Color(0xFFF5F5F5)
+val DeepBlue = Color(0xFF0056B3)
+
 // Light Theme Colors
 val BackgroundLight = Color(0xFFF8F8F8) // Even darker for maximum contrast with white cards
 val SurfaceLight = Color(0xFFFFFFFF)
