@@ -1,6 +1,6 @@
 /* ==========================================================================
    بامزی (Bamzi) - استایل‌های اختصاصی صفحه اصلی (Home Page Sections)
-   پالت رنگی: #F3F8FF, #7E30E1, #49108B | استایل: Claymorphism
+   پالت رنگی: #17153B, #2E236C, #433D8B, #C8ACD6 | استایل: Claymorphism
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -121,8 +121,8 @@
     height: 240px;
     border-radius: var(--radius-md);
     overflow: hidden;
-    background: #2E0A59;
-    box-shadow: 0 10px 24px rgba(73, 16, 139, 0.2);
+    background: #17153B;
+    box-shadow: 0 10px 24px rgba(23, 21, 59, 0.25);
 }
 
 .hero-visual-image img {
@@ -414,9 +414,9 @@
     height: 110px;
     border-radius: 26px;
     background: linear-gradient(145deg, #FFFFFF, #E8EFFE);
-    box-shadow: 10px 14px 28px rgba(73, 16, 139, 0.18),
+    box-shadow: 10px 14px 28px rgba(23, 21, 59, 0.18),
                 inset 3px 3px 6px rgba(255, 255, 255, 0.9),
-                inset -3px -3px 6px rgba(73, 16, 139, 0.08);
+                inset -3px -3px 6px rgba(23, 21, 59, 0.08);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -567,7 +567,7 @@
 .podium-avatar-wrapper .clay-avatar {
     width: 76px;
     height: 76px;
-    box-shadow: 0 10px 24px rgba(73, 16, 139, 0.2), var(--clay-card-inset);
+    box-shadow: 0 10px 24px rgba(23, 21, 59, 0.2), var(--clay-card-inset);
 }
 
 .podium-rank-1 .podium-avatar-wrapper .clay-avatar {

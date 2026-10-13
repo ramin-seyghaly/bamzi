@@ -11,11 +11,11 @@
   <g fill="#F8FAFC" font-family="'Outfit', sans-serif" font-weight="800" font-size="22" text-anchor="middle">
     <!-- Row 1 -->
     <text x="100" y="60">5</text>
-    <text x="150" y="60" fill="#7E30E1">3</text>
+    <text x="150" y="60" fill="#2D46B9">3</text>
     <text x="200" y="60">7</text>
     <!-- Row 2 -->
     <text x="100" y="110" fill="#10B981">6</text>
-    <rect x="135" y="85" width="30" height="30" rx="8" fill="#7E30E1" />
+    <rect x="135" y="85" width="30" height="30" rx="8" fill="#1F0C5E" />
     <text x="150" y="108" fill="#FFF">9</text>
     <text x="200" y="110">1</text>
     <!-- Row 3 -->

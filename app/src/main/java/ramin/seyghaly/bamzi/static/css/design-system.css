@@ -1,6 +1,6 @@
 /* ==========================================================================
    بامزی (Bamzi) - سیستم طراحی اختصاصی Claymorphism
-   رنگ‌های کلیدی: #F3F8FF (Light BG) | #7E30E1 (Primary) | #49108B (Deep)
+   پالت رنگی: #17153B (Deep) | #2E236C (Midnight) | #433D8B (Primary) | #C8ACD6 (Lavender)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap');
@@ -12,15 +12,17 @@
     --color-bg-surface-soft: #F9FBFF;
     --color-bg-elevated: #FFFFFF;
 
-    /* برندینگ و لهجه‌ها */
-    --color-primary: #7E30E1;
-    --color-primary-light: #9B51E0;
-    --color-primary-dark: #641BBF;
-    --color-primary-glow: rgba(126, 48, 225, 0.35);
+    /* برندینگ و لهجه‌ها (پالت اختصاصی ۴تایی) */
+    --color-primary: #433D8B;
+    --color-primary-light: #C8ACD6;
+    --color-primary-dark: #2E236C;
+    --color-primary-glow: rgba(67, 61, 139, 0.35);
 
-    --color-deep: #49108B;
-    --color-deep-light: #611EA8;
-    --color-deep-glow: rgba(73, 16, 139, 0.25);
+    --color-deep: #17153B;
+    --color-deep-light: #2E236C;
+    --color-deep-glow: rgba(23, 21, 59, 0.28);
+
+    --color-accent: #C8ACD6;
 
     /* رنگ‌های ثانویه و وضعیت */
     --color-success: #10B981;
@@ -31,41 +33,41 @@
     --color-bronze: #D97706;
 
     /* تایپوگرافی */
-    --color-text-main: #1D1338;
-    --color-text-muted: #64567F;
-    --color-text-light: #958BB0;
+    --color-text-main: #17153B;
+    --color-text-muted: #433D8B;
+    --color-text-light: #7E78AD;
     --color-text-on-primary: #FFFFFF;
 
-    --color-border: rgba(73, 16, 139, 0.08);
+    --color-border: rgba(23, 21, 59, 0.08);
 
     /* -------------------- سایه‌ها و فرمول Claymorphism لایت -------------------- */
     /* کارت کلیمورفیک معمولی */
     --clay-card-bg: linear-gradient(145deg, #FFFFFF 0%, #F5F9FF 100%);
-    --clay-card-shadow: 14px 18px 36px rgba(73, 16, 139, 0.10),
+    --clay-card-shadow: 14px 18px 36px rgba(23, 21, 59, 0.10),
                         -10px -10px 26px rgba(255, 255, 255, 0.95);
     --clay-card-inset: inset 3px 3px 5px rgba(255, 255, 255, 0.9),
-                       inset -4px -4px 8px rgba(73, 16, 139, 0.05);
+                       inset -4px -4px 8px rgba(23, 21, 59, 0.05);
 
     /* کارت کلیمورفیک در حال شناوری (Hover) */
-    --clay-card-hover-shadow: 18px 24px 44px rgba(73, 16, 139, 0.15),
+    --clay-card-hover-shadow: 18px 24px 44px rgba(23, 21, 59, 0.15),
                               -12px -12px 30px rgba(255, 255, 255, 1);
 
-    /* دکمه کلیمورفیک اصلی (بنفش برجسته) */
-    --clay-btn-primary-bg: linear-gradient(135deg, #8E44EB 0%, #7E30E1 50%, #681BCF 100%);
-    --clay-btn-primary-shadow: 0 10px 22px rgba(126, 48, 225, 0.35),
-                               inset 2px 2px 4px rgba(255, 255, 255, 0.45),
-                               inset -3px -3px 6px rgba(45, 10, 85, 0.35);
+    /* دکمه کلیمورفیک اصلی (#433D8B ➔ #2E236C با هایلایت #C8ACD6) */
+    --clay-btn-primary-bg: linear-gradient(135deg, #433D8B 0%, #2E236C 100%);
+    --clay-btn-primary-shadow: 0 10px 22px rgba(46, 35, 108, 0.38),
+                               inset 2px 2px 4px rgba(200, 172, 214, 0.40),
+                               inset -3px -3px 6px rgba(23, 21, 59, 0.45);
 
     /* دکمه کلیمورفیک ثانویه (سفید/روشن بالشتکی) */
     --clay-btn-secondary-bg: linear-gradient(145deg, #FFFFFF 0%, #F3F7FF 100%);
-    --clay-btn-secondary-shadow: 6px 8px 18px rgba(73, 16, 139, 0.08),
+    --clay-btn-secondary-shadow: 6px 8px 18px rgba(23, 21, 59, 0.08),
                                  -4px -4px 12px rgba(255, 255, 255, 0.9),
                                  inset 2px 2px 4px rgba(255, 255, 255, 0.9),
-                                 inset -2px -2px 4px rgba(73, 16, 139, 0.05);
+                                 inset -2px -2px 4px rgba(23, 21, 59, 0.05);
 
     /* المان فرورفته کلیمورفیک (مانند فیلدهای سرچ و اینپوت‌ها) */
     --clay-inset-bg: #EAF1FB;
-    --clay-inset-shadow: inset 4px 4px 9px rgba(73, 16, 139, 0.10),
+    --clay-inset-shadow: inset 4px 4px 9px rgba(23, 21, 59, 0.10),
                          inset -4px -4px 9px rgba(255, 255, 255, 0.95);
 
     /* انحناها و فواصل */
@@ -90,51 +92,51 @@
    حالت تاریک (Dark Mode)
    ========================================================================== */
 [data-theme="dark"] {
-    --color-bg-primary: #120924;
-    --color-bg-surface: #1E1038;
-    --color-bg-surface-soft: #170C2D;
-    --color-bg-elevated: #28154A;
+    --color-bg-primary: #17153B;
+    --color-bg-surface: #2E236C;
+    --color-bg-surface-soft: #201A52;
+    --color-bg-elevated: #372C7F;
 
-    --color-primary: #9C51F0;
-    --color-primary-light: #B472FF;
-    --color-primary-dark: #7E30E1;
-    --color-primary-glow: rgba(156, 81, 240, 0.45);
+    --color-primary: #C8ACD6;
+    --color-primary-light: #E4D5EB;
+    --color-primary-dark: #433D8B;
+    --color-primary-glow: rgba(200, 172, 214, 0.40);
 
-    --color-deep: #49108B;
-    --color-deep-light: #6A21BF;
-    --color-deep-glow: rgba(106, 33, 191, 0.4);
+    --color-deep: #17153B;
+    --color-deep-light: #2E236C;
+    --color-deep-glow: rgba(46, 35, 108, 0.45);
 
     --color-text-main: #F3F8FF;
-    --color-text-muted: #ABA1C7;
-    --color-text-light: #7E749C;
-    --color-text-on-primary: #FFFFFF;
+    --color-text-muted: #C8ACD6;
+    --color-text-light: #A596B8;
+    --color-text-on-primary: #17153B;
 
-    --color-border: rgba(255, 255, 255, 0.08);
+    --color-border: rgba(200, 172, 214, 0.15);
 
-    /* کلیمورفیسم دارک */
-    --clay-card-bg: linear-gradient(145deg, #251445 0%, #1A0D32 100%);
-    --clay-card-shadow: 16px 22px 42px rgba(0, 0, 0, 0.55),
-                        -6px -6px 22px rgba(73, 16, 139, 0.2);
-    --clay-card-inset: inset 2px 2px 5px rgba(255, 255, 255, 0.12),
-                       inset -4px -4px 8px rgba(0, 0, 0, 0.45);
+    /* کلیمورفیسم دارک بر پایه #17153B و #2E236C */
+    --clay-card-bg: linear-gradient(145deg, #2E236C 0%, #17153B 100%);
+    --clay-card-shadow: 16px 22px 42px rgba(0, 0, 0, 0.60),
+                        -6px -6px 22px rgba(46, 35, 108, 0.30);
+    --clay-card-inset: inset 2px 2px 5px rgba(200, 172, 214, 0.20),
+                       inset -4px -4px 8px rgba(0, 0, 0, 0.50);
 
-    --clay-card-hover-shadow: 20px 28px 50px rgba(0, 0, 0, 0.7),
-                              -8px -8px 26px rgba(126, 48, 225, 0.3);
+    --clay-card-hover-shadow: 20px 28px 50px rgba(0, 0, 0, 0.75),
+                              -8px -8px 26px rgba(67, 61, 139, 0.40);
 
-    --clay-btn-primary-bg: linear-gradient(135deg, #A85BFF 0%, #8E44EB 50%, #7020DE 100%);
-    --clay-btn-primary-shadow: 0 10px 26px rgba(142, 68, 235, 0.45),
-                               inset 2px 2px 4px rgba(255, 255, 255, 0.35),
-                               inset -3px -3px 6px rgba(0, 0, 0, 0.5);
+    --clay-btn-primary-bg: linear-gradient(135deg, #C8ACD6 0%, #A384B6 50%, #433D8B 100%);
+    --clay-btn-primary-shadow: 0 10px 26px rgba(200, 172, 214, 0.35),
+                               inset 2px 2px 4px rgba(255, 255, 255, 0.50),
+                               inset -3px -3px 6px rgba(23, 21, 59, 0.60);
 
-    --clay-btn-secondary-bg: linear-gradient(145deg, #2D1852 0%, #1E0E38 100%);
-    --clay-btn-secondary-shadow: 6px 8px 18px rgba(0, 0, 0, 0.4),
-                                 -4px -4px 12px rgba(73, 16, 139, 0.15),
-                                 inset 2px 2px 4px rgba(255, 255, 255, 0.1),
-                                 inset -2px -2px 4px rgba(0, 0, 0, 0.4);
+    --clay-btn-secondary-bg: linear-gradient(145deg, #372C7F 0%, #2E236C 100%);
+    --clay-btn-secondary-shadow: 6px 8px 18px rgba(0, 0, 0, 0.40),
+                                 -4px -4px 12px rgba(46, 35, 108, 0.25),
+                                 inset 2px 2px 4px rgba(200, 172, 214, 0.15),
+                                 inset -2px -2px 4px rgba(0, 0, 0, 0.40);
 
-    --clay-inset-bg: #0D061A;
-    --clay-inset-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.7),
-                         inset -2px -2px 8px rgba(73, 16, 139, 0.25);
+    --clay-inset-bg: #12102F;
+    --clay-inset-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.75),
+                         inset -2px -2px 8px rgba(46, 35, 108, 0.30);
 }
 
 /* ==========================================================================
@@ -245,7 +247,7 @@ body {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 14px 28px var(--color-primary-glow),
                 inset 2px 2px 5px rgba(255, 255, 255, 0.55),
-                inset -3px -3px 6px rgba(45, 10, 85, 0.4);
+                inset -3px -3px 6px rgba(23, 21, 59, 0.45);
     filter: brightness(1.05);
 }
 
@@ -308,9 +310,9 @@ body {
 }
 
 .clay-badge-offline {
-    background: linear-gradient(135deg, rgba(126, 48, 225, 0.12), rgba(126, 48, 225, 0.2));
+    background: linear-gradient(135deg, rgba(200, 172, 214, 0.25), rgba(67, 61, 139, 0.15));
     color: var(--color-primary);
-    border: 1px solid rgba(126, 48, 225, 0.2);
+    border: 1px solid rgba(67, 61, 139, 0.25);
 }
 
 .clay-badge-tool {
@@ -411,7 +413,7 @@ h1, h2, h3, h4 {
 }
 
 [data-theme="dark"] .text-gradient {
-    background: linear-gradient(135deg, #B774FF 0%, #7E30E1 100%);
+    background: linear-gradient(135deg, #C8ACD6 0%, #433D8B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
   <defs>
     <linearGradient id="mine-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#311B92" />
-      <stop offset="100%" stop-color="#1A237E" />
+      <stop offset="0%" stop-color="#1F0C5E" />
+      <stop offset="100%" stop-color="#10043B" />
     </linearGradient>
   </defs>
   <rect width="300" height="200" fill="url(#mine-bg)" />
@@ -22,7 +22,7 @@
   </g>
   <!-- Flag Badge -->
   <g transform="translate(45, 45)">
-    <rect width="40" height="40" rx="12" fill="#7E30E1" />
+    <rect width="40" height="40" rx="12" fill="#1F0C5E" />
     <!-- Flag symbol -->
     <polygon points="12,12 28,18 12,24" fill="#EF4444" />
     <line x1="12" y1="12" x2="12" y2="30" stroke="#FFF" stroke-width="2.5" />

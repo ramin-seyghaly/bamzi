@@ -1,6 +1,5 @@
 package ramin.seyghaly.bamzi.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -9,40 +8,38 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = OrangePrimary,
-    onPrimary = Color.Black,
-    secondary = OrangeLight,
-    onSecondary = Color.Black,
-    background = BackgroundDark,
-    surface = SurfaceDark,
-    onBackground = TextLight,
-    onSurface = TextLight,
-    surfaceVariant = Color(0xFF2C2C2C),
-    onSurfaceVariant = TextGreyDark
+    primary = BamziDarkPrimary,
+    onPrimary = BamziDarkTextOnPrimary,
+    secondary = BamziDarkPrimaryLight,
+    onSecondary = BamziDarkTextOnPrimary,
+    background = BamziDarkBgPrimary,
+    surface = BamziDarkBgSurface,
+    onBackground = BamziDarkTextMain,
+    onSurface = BamziDarkTextMain,
+    surfaceVariant = BamziDarkBgSurfaceSoft,
+    onSurfaceVariant = BamziDarkTextMuted
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = OrangePrimary,
-    onPrimary = Color.White,
-    secondary = OrangeLight,
-    onSecondary = Color.White,
-    background = BackgroundLight,
-    surface = SurfaceLight,
-    onBackground = TextDark,
-    onSurface = TextDark,
-    surfaceVariant = Color(0xFFF5F5F5),
-    onSurfaceVariant = TextGrey
+    primary = BamziLightPrimary,
+    onPrimary = BamziLightTextOnPrimary,
+    secondary = BamziLightPrimaryLight,
+    onSecondary = BamziLightTextOnPrimary,
+    background = BamziLightBgPrimary,
+    surface = BamziLightBgSurface,
+    onBackground = BamziLightTextMain,
+    onSurface = BamziLightTextMain,
+    surfaceVariant = BamziLightBgSurfaceSoft,
+    onSurfaceVariant = BamziLightTextMuted
 )
 
 @Composable
 fun BamziTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = false, // Set to false to prioritize brand colors
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

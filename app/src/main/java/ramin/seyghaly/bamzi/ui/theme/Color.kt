@@ -3,83 +3,50 @@ package ramin.seyghaly.bamzi.ui.theme
 import androidx.compose.ui.graphics.Color
 
 /**
- * Bamzi Design System Exact Color Palette (Combined with web purple tokens: #6220c0, #8d46e8)
+ * Bamzi Color Palette - Light Purple (Day Mode) & Dark Purple (Night Mode):
  */
 
-// Brand Colors
-val OrangePrimary = Color(0xFFF58F29)
-val OrangeLight = Color(0xFFF9B872)
+// 4-Color Core Palette
+val BamziDeep = Color(0xFF1D1A45)
+val BamziMidnight = Color(0xFF372C7F)
+val BamziPrimary = Color(0xFF4E489E)
+val BamziLavender = Color(0xFFD4BCE0)
 
-// UI Component Colors
-val BlueIcon = Color(0xFF4A90E2)
-val BlueBg = Color(0xFFE3F2FD)
-val RedIcon = Color(0xFFE57373)
-val RedBg = Color(0xFFFFEBEE)
-val OrangeIcon = Color(0xFFFF8A65)
-val OrangeBg = Color(0xFFFFF3E0)
-val PurpleIcon = Color(0xFF9575CD)
-val PurpleBg = Color(0xFFF3E5F5)
-val GreyIcon = Color(0xFF757575)
-val GreyBg = Color(0xFFF5F5F5)
-val DeepBlue = Color(0xFF0056B3)
-
-// Light Theme Colors
-val BackgroundLight = Color(0xFFF8F8F8)
-val SurfaceLight = Color(0xFFFFFFFF)
-val TextDark = Color(0xFF2D2D2D)
-val TextGrey = Color(0xFF757575)
-
-// Dark Theme Colors
-val BackgroundDark = Color(0xFF000000)
-val SurfaceDark = Color(0xFF1C1C1E)
-val TextLight = Color(0xFFEEEEEE)
-val TextGreyDark = Color(0xFFB0B0B0)
-
-// --- Bamzi Claymorphic Color Tokens ---
-val BamziLightBgPrimary = Color(0xFFF3F8FF)
-val BamziLightBgSurface = Color(0xFFFFFFFF)
-val BamziLightBgSurfaceSoft = Color(0xFFF9FBFF)
+// --- Light Theme Tokens (Light Purple / Day Mode matching dark purple aesthetic) ---
+val BamziLightBgPrimary = Color(0xFFF4F0FF)     // Soft pastel lavender day background
+val BamziLightBgSurface = Color(0xFFFFFFFF)     // Card background
+val BamziLightBgSurfaceSoft = Color(0xFFF9F6FF)
 val BamziLightBgElevated = Color(0xFFFFFFFF)
 
-val BamziLightPrimary = Color(0xFF7E30E1)
-val BamziLightPrimaryLight = Color(0xFF8D46E8) // Web exact primary light (#8d46e8)
-val BamziLightPrimaryDark = Color(0xFF6220C0)  // Web exact primary dark (#6220c0)
-val BamziLightPrimaryGlow = Color(0x598D46E8)
+val BamziLightPrimary = Color(0xFF5E52B8)       // Day primary purple button
+val BamziLightPrimaryLight = Color(0xFFD4BCE0)
+val BamziLightPrimaryDark = Color(0xFF372C7F)
 
-val BamziLightDeep = Color(0xFF49108B)
-val BamziLightDeepLight = Color(0xFF6220C0)
-val BamziLightDeepGlow = Color(0x4049108B)
-
-val BamziLightTextMain = Color(0xFF1D1338)
-val BamziLightTextMuted = Color(0xFF64567F)
-val BamziLightTextLight = Color(0xFF958BB0)
+val BamziLightTextMain = Color(0xFF1E1945)      // Deep purple high contrast text
+val BamziLightTextMuted = Color(0xFF5C52A6)
+val BamziLightTextLight = Color(0xFF8B84BD)
 val BamziLightTextOnPrimary = Color(0xFFFFFFFF)
 
-val BamziLightBorder = Color(0x1449108B)
-val BamziLightInsetBg = Color(0xFFEAF1FB)
+val BamziLightBorder = Color(0x265C52A6)
+val BamziLightInsetBg = Color(0xFFE8E2FF)       // Soft lavender inset box
 
-// --- Dark Theme Colors ---
-val BamziDarkBgPrimary = Color(0xFF120924)
-val BamziDarkBgSurface = Color(0xFF1E1038)
-val BamziDarkBgSurfaceSoft = Color(0xFF170C2D)
-val BamziDarkBgElevated = Color(0xFF28154A)
+// --- Dark Theme Tokens (Night Purple Mode) ---
+val BamziDarkBgPrimary = Color(0xFF1D1A45)
+val BamziDarkBgSurface = Color(0xFF372C7F)
+val BamziDarkBgSurfaceSoft = Color(0xFF292167)
+val BamziDarkBgElevated = Color(0xFF433892)
 
-val BamziDarkPrimary = Color(0xFF9C51F0)
-val BamziDarkPrimaryLight = Color(0xFFB472FF)
-val BamziDarkPrimaryDark = Color(0xFF8D46E8)
-val BamziDarkPrimaryGlow = Color(0x739C51F0)
+val BamziDarkPrimary = Color(0xFFD8BEE6)
+val BamziDarkPrimaryLight = Color(0xFFF0E5F5)
+val BamziDarkPrimaryDark = Color(0xFF4E489E)
 
-val BamziDarkDeep = Color(0xFF49108B)
-val BamziDarkDeepLight = Color(0xFF6220C0)
-val BamziDarkDeepGlow = Color(0x666A21BF)
+val BamziDarkTextMain = Color(0xFFFAFCFF)
+val BamziDarkTextMuted = Color(0xFFD4BCE0)
+val BamziDarkTextLight = Color(0xFFBCAECB)
+val BamziDarkTextOnPrimary = Color(0xFF1D1A45)
 
-val BamziDarkTextMain = Color(0xFFF3F8FF)
-val BamziDarkTextMuted = Color(0xFFABA1C7)
-val BamziDarkTextLight = Color(0xFF7E749C)
-val BamziDarkTextOnPrimary = Color(0xFFFFFFFF)
-
-val BamziDarkBorder = Color(0x14FFFFFF)
-val BamziDarkInsetBg = Color(0xFF0D061A)
+val BamziDarkBorder = Color(0x26D4BCE0)
+val BamziDarkInsetBg = Color(0xFF18153D)
 
 // --- Status & Badges Colors ---
 val BamziSuccess = Color(0xFF10B981)

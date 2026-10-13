@@ -6,10 +6,10 @@
       <stop offset="100%" stop-color="#D97706" />
     </linearGradient>
     <filter id="coin-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="3" dy="7" stdDeviation="5" flood-color="#49108B" flood-opacity="0.3"/>
+      <feDropShadow dx="3" dy="7" stdDeviation="5" flood-color="#10043B" flood-opacity="0.3"/>
     </filter>
   </defs>
-  <rect width="200" height="200" rx="30" fill="#49108B" />
+  <rect width="200" height="200" rx="30" fill="#10043B" />
   <!-- 3D Gold Coin with Clay Depth -->
   <g transform="translate(100, 100)" filter="url(#coin-shadow)">
     <!-- Outer Rim -->

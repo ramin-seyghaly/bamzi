@@ -1,6 +1,6 @@
 /* ==========================================================================
    بامزی (Bamzi) - کامپوننت‌های هدر، فوتر و المان‌های ناوبری (Components)
-   استایل: Claymorphism با پالت #F3F8FF, #7E30E1, #49108B
+   استایل: Claymorphism با پالت #17153B, #2E236C, #433D8B, #C8ACD6
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -74,7 +74,7 @@
 
 .nav-link:hover {
     color: var(--color-primary);
-    background-color: rgba(126, 48, 225, 0.08);
+    background-color: rgba(67, 61, 139, 0.08);
     transform: translateY(-1px);
 }
 
@@ -184,7 +184,7 @@
     padding: 60px 0 30px;
     background: var(--clay-card-bg);
     border-top: 1px solid var(--color-border);
-    box-shadow: 0 -10px 30px rgba(73, 16, 139, 0.04),
+    box-shadow: 0 -10px 30px rgba(23, 21, 59, 0.04),
                 var(--clay-card-inset);
     position: relative;
 }

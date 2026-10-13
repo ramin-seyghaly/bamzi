@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import kotlinx.serialization.Serializable
-import ramin.seyghaly.bamzi.ui.home.HomeScreen
+import ramin.seyghaly.bamzi.ui.screens.home.HomeScreen
 
 @Serializable
 object HomeRoute
@@ -17,7 +17,10 @@ fun NavGraph(navController: NavHostController) {
         startDestination = HomeRoute
     ) {
         composable<HomeRoute> {
-            HomeScreen()
+            HomeScreen(
+                onLoginClick = {},
+                onRegisterClick = {}
+            )
         }
     }
 }

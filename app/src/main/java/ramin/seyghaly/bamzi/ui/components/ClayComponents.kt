@@ -37,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -49,7 +50,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ramin.seyghaly.bamzi.ui.theme.BamziLightBorder
-import ramin.seyghaly.bamzi.ui.theme.BamziLightDeepGlow
 import ramin.seyghaly.bamzi.ui.theme.BamziSuccess
 import ramin.seyghaly.bamzi.ui.theme.clayButtonPrimary
 import ramin.seyghaly.bamzi.ui.theme.clayButtonSecondary
@@ -97,7 +97,7 @@ fun Modifier.clayClickable(
 fun ClayCard(
     modifier: Modifier = Modifier,
     isDark: Boolean = false,
-    shape: Shape = RoundedCornerShape(24.dp),
+    shape: Shape = RoundedCornerShape(28.dp),
     elevation: Dp = 16.dp,
     onClick: (() -> Unit)? = null,
     content: @Composable () -> Unit
@@ -129,11 +129,12 @@ fun ClayPrimaryButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     size: ClayButtonSize = ClayButtonSize.Medium,
+    isDark: Boolean = false,
     leadingIcon: ImageVector? = null,
     trailingIcon: ImageVector? = null,
     enabled: Boolean = true
 ) {
-    val shape = RoundedCornerShape(if (size == ClayButtonSize.Small) 16.dp else 22.dp)
+    val shape = RoundedCornerShape(if (size == ClayButtonSize.Small) 28.dp else 28.dp)
     val verticalPadding = when (size) {
         ClayButtonSize.Small -> 6.dp
         ClayButtonSize.Medium -> 10.dp
@@ -153,7 +154,7 @@ fun ClayPrimaryButton(
     Box(
         modifier = modifier
             .clip(shape)
-            .clayButtonPrimary(shape)
+            .clayButtonPrimary(isDark = isDark, shape = shape)
             .clayClickable(enabled = enabled, onClick = onClick)
             .padding(horizontal = horizontalPadding, vertical = verticalPadding),
         contentAlignment = Alignment.Center
@@ -190,7 +191,7 @@ fun ClaySecondaryButton(
     trailingIcon: ImageVector? = null,
     enabled: Boolean = true
 ) {
-    val shape = RoundedCornerShape(if (size == ClayButtonSize.Small) 16.dp else 22.dp)
+    val shape = RoundedCornerShape(if (size == ClayButtonSize.Small) 28.dp else 28.dp)
     val verticalPadding = when (size) {
         ClayButtonSize.Small -> 6.dp
         ClayButtonSize.Medium -> 10.dp
@@ -210,6 +211,7 @@ fun ClaySecondaryButton(
 
     Box(
         modifier = modifier
+            .shadow(elevation = 10.dp, shape = shape)
             .clip(shape)
             .clayButtonSecondary(isDark = isDark, shape = shape)
             .clayClickable(enabled = enabled, onClick = onClick)
@@ -241,11 +243,12 @@ fun ClaySecondaryButton(
 fun ClayInsetBox(
     modifier: Modifier = Modifier,
     isDark: Boolean = false,
-    shape: Shape = RoundedCornerShape(16.dp),
+    shape: Shape = RoundedCornerShape(28.dp),
     content: @Composable () -> Unit
 ) {
     Box(
         modifier = modifier
+            .shadow(elevation = 10.dp, shape = shape)
             .clip(shape)
             .clayInset(isDark = isDark, shape = shape)
             .padding(horizontal = 16.dp, vertical = 12.dp)
@@ -263,12 +266,13 @@ fun ClayTextField(
     isDark: Boolean = false,
     leadingIcon: ImageVector? = null
 ) {
-    val shape = RoundedCornerShape(16.dp)
+    val shape = RoundedCornerShape(28.dp)
     val textColor = if (isDark) Color(0xFFF3F8FF) else Color(0xFF1D1338)
     val placeholderColor = if (isDark) Color(0xFF7E749C) else Color(0xFF958BB0)
 
     Box(
         modifier = modifier
+            .shadow(elevation = 10.dp, shape = shape)
             .fillMaxWidth()
             .clip(shape)
             .clayInset(isDark = isDark, shape = shape)
@@ -401,7 +405,7 @@ fun ClayAvatar(
             .drawBehind {
                 // Outer subtle glow ring
                 drawCircle(
-                    color = BamziLightDeepGlow,
+                    color = Color(0x40433D8B),
                     radius = size.toPx() * 0.5f,
                     center = center
                 )
@@ -424,7 +428,7 @@ fun ClayStatItem(
     modifier: Modifier = Modifier,
     isDark: Boolean = false
 ) {
-    val shape = RoundedCornerShape(18.dp)
+    val shape = RoundedCornerShape(28.dp)
     Box(
         modifier = modifier
             .clip(shape)

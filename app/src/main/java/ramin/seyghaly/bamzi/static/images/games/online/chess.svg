@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
   <defs>
     <linearGradient id="chess-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#49108B" />
-      <stop offset="60%" stop-color="#2E0A59" />
-      <stop offset="100%" stop-color="#190432" />
+      <stop offset="0%" stop-color="#10043B" />
+      <stop offset="60%" stop-color="#0A0624" />
+      <stop offset="100%" stop-color="#050314" />
     </linearGradient>
     <linearGradient id="chess-gold" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FCD34D" />
@@ -16,7 +16,7 @@
   <rect width="300" height="200" fill="url(#chess-bg)" />
   <!-- Stylized board tiles pattern in perspective -->
   <g opacity="0.15">
-    <polygon points="20,180 280,180 220,110 80,110" fill="#7E30E1" />
+    <polygon points="20,180 280,180 220,110 80,110" fill="#1F0C5E" />
     <line x1="85" y1="110" x2="35" y2="180" stroke="#FFF" stroke-width="2"/>
     <line x1="120" y1="110" x2="90" y2="180" stroke="#FFF" stroke-width="2"/>
     <line x1="150" y1="110" x2="150" y2="180" stroke="#FFF" stroke-width="2"/>
@@ -34,12 +34,12 @@
     <!-- Gold highlight ring -->
     <rect x="136" y="86" width="28" height="6" fill="url(#chess-gold)" rx="3" />
 
-    <!-- Purple/Dark Knight on left -->
-    <path d="M75 155 L120 155 L115 138 C115 138 125 110 110 95 C98 84 85 92 85 92 C85 92 80 80 95 70 C80 72 70 85 70 100 C70 112 65 115 65 125 L85 138 Z" fill="#9E54FF" />
+    <!-- Blue/Dark Knight on left -->
+    <path d="M75 155 L120 155 L115 138 C115 138 125 110 110 95 C98 84 85 92 85 92 C85 92 80 80 95 70 C80 72 70 85 70 100 C70 112 65 115 65 125 L85 138 Z" fill="#2D46B9" />
     <circle cx="82" cy="92" r="3" fill="#FFF" />
   </g>
   <!-- Ambient glow particles -->
   <circle cx="230" cy="50" r="4" fill="#FFE169" opacity="0.8" />
-  <circle cx="50" cy="40" r="3" fill="#9E54FF" opacity="0.6" />
-  <circle cx="250" cy="140" r="5" fill="#7E30E1" opacity="0.7" />
+  <circle cx="50" cy="40" r="3" fill="#3D64FF" opacity="0.6" />
+  <circle cx="250" cy="140" r="5" fill="#1F0C5E" opacity="0.7" />
 </svg>

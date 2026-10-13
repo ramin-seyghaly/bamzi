@@ -29,6 +29,7 @@ fun ClayPrimaryButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    isDark: Boolean = false,
     icon: ImageVector? = null,
     enabled: Boolean = true
 ) {
@@ -36,9 +37,9 @@ fun ClayPrimaryButton(
     Box(
         modifier = modifier
             .clip(shape)
-            .clayButtonPrimary(shape)
+            .clayButtonPrimary(isDark = isDark, shape = shape)
             .clickable(enabled = enabled, onClick = onClick)
-            .padding(horizontal = 18.dp, vertical = 8.dp), // Sleeker, lower height matching web buttons
+            .padding(horizontal = 18.dp, vertical = 8.dp),
         contentAlignment = Alignment.Center
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -77,7 +78,7 @@ fun ClaySecondaryButton(
             .clip(shape)
             .clayButtonSecondary(isDark = isDark, shape = shape)
             .clickable(enabled = enabled, onClick = onClick)
-            .padding(horizontal = 18.dp, vertical = 8.dp), // Sleeker, lower height matching web buttons
+            .padding(horizontal = 18.dp, vertical = 8.dp),
         contentAlignment = Alignment.Center
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -118,7 +119,7 @@ fun ClayButtonLightPreview() {
 fun ClayButtonDarkPreview() {
     BamziTheme(darkTheme = true) {
         androidx.compose.foundation.layout.Column(modifier = Modifier.padding(16.dp)) {
-            ClayPrimaryButton(text = "شروع بازی", onClick = {})
+            ClayPrimaryButton(text = "شروع بازی", onClick = {}, isDark = true)
             Spacer(modifier = Modifier.height(16.dp))
             ClaySecondaryButton(text = "تنظیمات", onClick = {}, isDark = true)
         }

@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
   <defs>
     <linearGradient id="ttt-off-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4C1D95" />
-      <stop offset="100%" stop-color="#2E1065" />
+      <stop offset="0%" stop-color="#1F0C5E" />
+      <stop offset="100%" stop-color="#10043B" />
     </linearGradient>
   </defs>
   <rect width="300" height="200" fill="url(#ttt-off-bg)" />
   <g transform="translate(60, 20)">
     <!-- Wooden / Clay Board -->
-    <rect x="0" y="0" width="180" height="160" rx="24" fill="#581C87" stroke="#7E30E1" stroke-width="3"/>
+    <rect x="0" y="0" width="180" height="160" rx="24" fill="#10043B" stroke="#1F0C5E" stroke-width="3"/>
     <!-- Grid -->
-    <line x1="60" y1="20" x2="60" y2="140" stroke="#9333EA" stroke-width="6" stroke-linecap="round" />
-    <line x1="120" y1="20" x2="120" y2="140" stroke="#9333EA" stroke-width="6" stroke-linecap="round" />
-    <line x1="20" y1="60" x2="160" y2="60" stroke="#9333EA" stroke-width="6" stroke-linecap="round" />
-    <line x1="20" y1="100" x2="160" y2="100" stroke="#9333EA" stroke-width="6" stroke-linecap="round" />
+    <line x1="60" y1="20" x2="60" y2="140" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" />
+    <line x1="120" y1="20" x2="120" y2="140" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" />
+    <line x1="20" y1="60" x2="160" y2="60" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" />
+    <line x1="20" y1="100" x2="160" y2="100" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" />
     <!-- Bot / Offline icon -->
     <circle cx="38" cy="40" r="14" fill="#38BDF8" />
     <text x="38" y="45" font-family="'Outfit', sans-serif" font-weight="900" font-size="14" fill="#FFF" text-anchor="middle">AI</text>
