@@ -17,6 +17,73 @@ import androidx.compose.ui.unit.dp
  * in both Light and Dark modes for an unmistakable 3D clay depth effect.
  */
 
+fun Modifier.bubbleBackground(seed: Long, isDark: Boolean = false): Modifier = this.drawBehind {
+    val width = size.width
+    val height = size.height
+
+    // Seeded random generator based on item seed for independent, unique shapes per list item
+    val random = kotlin.random.Random(seed)
+
+    // Two corner-aligned, non-overlapping organic rounded shapes (squircles resembling soft bubbles)
+    val x1 = width * (0.08f + random.nextFloat() * 0.15f)
+    val y1 = height * (0.08f + random.nextFloat() * 0.15f)
+    val rx1 = width * (0.16f + random.nextFloat() * 0.08f)
+    val ry1 = width * (0.14f + random.nextFloat() * 0.08f)
+
+    val x2 = width * (0.76f + random.nextFloat() * 0.15f)
+    val y2 = height * (0.76f + random.nextFloat() * 0.15f)
+    val rx2 = width * (0.18f + random.nextFloat() * 0.08f)
+    val ry2 = width * (0.15f + random.nextFloat() * 0.08f)
+
+    // Multiple random pink palettes for each theme
+    val lightPinks = listOf(
+        Color(0xFFFFB6C1), // Light Pink
+        Color(0xFFFFC0CB), // Pink
+        Color(0xFFFFD1DC), // Pastel Pink
+        Color(0xFFFFA6C1)  // Warm Pink
+    )
+    val darkPinks = listOf(
+        Color(0xFFE91E63), // Vibrant Pink
+        Color(0xFFD81B60), // Deep Pink
+        Color(0xFFC2185B), // Dark Pink
+        Color(0xFFAD1457)  // Berry Pink
+    )
+
+    val color1 = if (isDark) {
+        val pink = darkPinks[random.nextInt(darkPinks.size)]
+        val alpha = 0.06f + random.nextFloat() * 0.06f
+        pink.copy(alpha = alpha)
+    } else {
+        val pink = lightPinks[random.nextInt(lightPinks.size)]
+        val alpha = 0.05f + random.nextFloat() * 0.05f
+        pink.copy(alpha = alpha)
+    }
+
+    val color2 = if (isDark) {
+        val pink = darkPinks[random.nextInt(darkPinks.size)]
+        val alpha = 0.06f + random.nextFloat() * 0.06f
+        pink.copy(alpha = alpha)
+    } else {
+        val pink = lightPinks[random.nextInt(lightPinks.size)]
+        val alpha = 0.05f + random.nextFloat() * 0.05f
+        pink.copy(alpha = alpha)
+    }
+
+    // Draw organic squircles / rounded shapes resembling soft bubbles with random pink shades
+    drawRoundRect(
+        color = color1,
+        topLeft = Offset(x1 - rx1, y1 - ry1),
+        size = Size(rx1 * 2f, ry1 * 2f),
+        cornerRadius = CornerRadius(rx1 * 0.8f, ry1 * 0.8f)
+    )
+    drawRoundRect(
+        color = color2,
+        topLeft = Offset(x2 - rx2, y2 - ry2),
+        size = Size(rx2 * 2f, ry2 * 2f),
+        cornerRadius = CornerRadius(rx2 * 0.8f, ry2 * 0.8f)
+    )
+}
+
 fun Modifier.clayCard(
     isDark: Boolean = false,
     shape: androidx.compose.ui.graphics.Shape,
@@ -37,7 +104,7 @@ fun Modifier.clayCard(
             )
         } else {
             Brush.linearGradient(
-                colors = listOf(Color(0xFFFFFFFF), Color(0xFFB0C8EC)),
+                colors = listOf(Color(0xFFE2ECF7), Color(0xFFC8D8F0)),
                 start = Offset(0f, 0f),
                 end = Offset(1000f, 1000f)
             )
@@ -45,8 +112,8 @@ fun Modifier.clayCard(
         shape = shape
     )
     .drawBehind {
-        val topLeftLight = if (isDark) Color(0xFF374782) else Color(0xC3C4D8F0)
-        val bottomRightDark = if (isDark) Color(0xE02B376C) else Color(0xFF88A2BC)
+        val topLeftLight = if (isDark) Color(0xFF374782) else Color(0xC3F0F6FF)
+        val bottomRightDark = if (isDark) Color(0xE02B376C) else Color(0xFF9EB2C7)
 
         val cornerRadius = 28.dp.toPx()
         val steps = 6 // Bolder steps
@@ -230,7 +297,7 @@ fun Modifier.clayInset(
         shape = shape
     )
     .drawBehind {
-        val topDarkShadow = if (isDark) Color.Black.copy(alpha = 0.85f) else Color(0xFF455A9E).copy(alpha = 0.25f)
+        val topDarkShadow = if (isDark) Color.Black.copy(alpha = 0.08f) else Color(0xFF455A9E).copy(alpha = 0.25f)
         val cornerRadius = 16.dp.toPx()
         val steps = 5
 

@@ -18,8 +18,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ramin.seyghaly.bamzi.ui.components.BamziToolbar
-import ramin.seyghaly.bamzi.ui.components.GameItem
 import ramin.seyghaly.bamzi.ui.components.OfflineGamesHorizontalSection
 import ramin.seyghaly.bamzi.ui.theme.BamziTheme
 
@@ -28,36 +28,11 @@ fun HomeScreen(
     onLoginClick: () -> Unit,
     onRegisterClick: () -> Unit,
     modifier: Modifier = Modifier,
-    initialDarkTheme: Boolean = false
+    initialDarkTheme: Boolean = false,
+    viewModel: HomeViewModel = androidx.hilt.navigation.compose.hiltViewModel()
 ) {
     var isDark by remember { mutableStateOf(initialDarkTheme) }
-
-    val offlineGamesList = listOf(
-        GameItem(
-            title = "چهار در یک (Connect 4)",
-            category = "تخته‌ای",
-            description = "بازی صفحه ای استراتژیک چهار مهره پشت سر هم",
-            iconEmoji = "🔴"
-        ),
-        GameItem(
-            title = "دوز (Tic-Tac-Toe)",
-            category = "کلاسیک",
-            description = "بازی سریع و نوستالژیک دوز ۳ در ۳",
-            iconEmoji = "❌"
-        ),
-        GameItem(
-            title = "شطرنج (Chess)",
-            category = "استراتژیک",
-            description = "بازی فکری و استراتژیک شطرنج دو نفره با پشتیبانی از سیستم ریتینگ",
-            iconEmoji = "♟️"
-        ),
-        GameItem(
-            title = "سودوکو (Sudoku)",
-            category = "فکری",
-            description = "پازل اعداد کلاسیک برای تقویت تمرکز و هوش",
-            iconEmoji = "🔢"
-        )
-    )
+    val offlineGamesList by viewModel.games.collectAsStateWithLifecycle()
 
     BamziTheme(darkTheme = isDark) {
         Surface(

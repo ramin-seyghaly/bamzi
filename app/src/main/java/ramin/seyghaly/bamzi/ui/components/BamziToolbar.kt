@@ -85,6 +85,7 @@ fun BamziToolbar(
                 ClayPrimaryButton(
                     text = "ثبت‌نام",
                     onClick = onRegisterClick,
+                    isDark = isDark,
                     size = ClayButtonSize.Small
                 )
             }

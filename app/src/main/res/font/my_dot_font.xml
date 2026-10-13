@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <font
+        android:font="@font/iransansx_thin"
+        android:fontWeight="100"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/iransansx_ultralight"
+        android:fontWeight="200"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/iransansx_light"
+        android:fontWeight="300"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/iransansx_regular"
+        android:fontWeight="400"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/iransansx_medium"
+        android:fontWeight="500"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/iransansx_demibold"
+        android:fontWeight="600"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/iransansx_bold"
+        android:fontWeight="700"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/iransansx_extrabold"
+        android:fontWeight="800"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/iransansx_black"
+        android:fontWeight="900"
+        android:fontStyle="normal"/>
+
+</font-family>
