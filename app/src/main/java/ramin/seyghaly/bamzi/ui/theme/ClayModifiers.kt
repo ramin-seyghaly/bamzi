@@ -13,10 +13,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 /**
- * Perfectly balanced Claymorphism Modifiers:
- * - Top & Left = Soft light source (topLeftLight)
- * - Right & Bottom = Subtle shadow (bottomRightDark)
- * - Light Mode: Soft and subtle 20% opacity highlights.
+ * Professional Claymorphism Modifiers with bolder, thicker inner shadows
+ * in both Light and Dark modes for an unmistakable 3D clay depth effect.
  */
 
 fun Modifier.clayCard(
@@ -27,8 +25,8 @@ fun Modifier.clayCard(
     .shadow(
         elevation = elevation,
         shape = shape,
-        ambientColor = if (isDark) Color.Black.copy(alpha = 0.95f) else Color(0xFF372C7F).copy(alpha = 0.15f),
-        spotColor = if (isDark) Color(0xFF433892).copy(alpha = 0.35f) else Color(0xFF5E52B8).copy(alpha = 0.08f)
+        ambientColor = if (isDark) Color.Black.copy(alpha = 0.95f) else Color(0xFF372C7F).copy(alpha = 0.22f),
+        spotColor = if (isDark) Color(0xFF433892).copy(alpha = 0.85f) else Color(0xFF5E52B8).copy(alpha = 0.15f)
     )
     .background(
         brush = if (isDark) {
@@ -47,18 +45,17 @@ fun Modifier.clayCard(
         shape = shape
     )
     .drawBehind {
-        // Top & Left = Soft light (20% opacity in light mode), Right & Bottom = Subtle shadow
-        val topLeftLight = if (isDark) Color(0xFFD4BCE0).copy(alpha = 0.35f) else Color(0xFF685CC7).copy(alpha = 0.2f)
-        val bottomRightDark = if (isDark) Color.Black.copy(alpha = 0.7f) else Color(0xFF372C7F).copy(alpha = 0.06f)
+        val topLeftLight = if (isDark) Color(0xFF28235A) else Color(0xC3F7F7FF)
+        val bottomRightDark = if (isDark) Color(0xE0211A2A) else Color(0xFFC3C0CB)
 
         val cornerRadius = 28.dp.toPx()
-        val steps = 5
+        val steps = 6 // Bolder steps
 
         for (i in 0 until steps) {
             val progress = i.toFloat() / steps
-            val insetOffset = i.toFloat()
-            val lightAlpha = (1f - progress) * (if (isDark) 0.5f else 0.1f)
-            val darkAlpha = (1f - progress) * (if (isDark) 0.5f else 0.15f)
+            val insetOffset = i.toFloat() * 1.2f
+            val lightAlpha = (1f - progress) * (if (isDark) 0.6f else 0.75f)
+            val darkAlpha = (1f - progress) * (if (isDark) 0.6f else 0.75f)
 
             drawRoundRect(
                 brush = Brush.linearGradient(
@@ -69,19 +66,19 @@ fun Modifier.clayCard(
                 topLeft = Offset(insetOffset, insetOffset),
                 size = Size(size.width - insetOffset * 2, size.height - insetOffset * 2),
                 cornerRadius = CornerRadius(maxOf(0f, cornerRadius - insetOffset)),
-                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 1.2f)
+                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 5.0f) // Thicker stroke
             )
 
             drawRoundRect(
                 brush = Brush.linearGradient(
                     colors = listOf(Color.Transparent, bottomRightDark.copy(alpha = darkAlpha)),
-                    start = Offset(size.width * 0.3f, size.height * 0.3f),
+                    start = Offset(size.width * 0.3f, size.height * 0.5f),
                     end = Offset(size.width, size.height)
                 ),
                 topLeft = Offset(insetOffset, insetOffset),
                 size = Size(size.width - insetOffset * 2, size.height - insetOffset * 2),
                 cornerRadius = CornerRadius(maxOf(0f, cornerRadius - insetOffset)),
-                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 1.2f)
+                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 5.0f) // Thicker stroke
             )
         }
     }
@@ -93,8 +90,8 @@ fun Modifier.clayButtonPrimary(
     .shadow(
         elevation = 16.dp,
         shape = shape,
-        ambientColor = if (isDark) Color(0xFFD4BCE0).copy(alpha = 0.8f) else Color(0xFF372C7F).copy(alpha = 0.25f),
-        spotColor = if (isDark) Color(0xFFD4BCE0).copy(alpha = 0.7f) else Color(0xFF5E52B8).copy(alpha = 0.15f)
+        ambientColor = if (isDark) Color(0xFFD4BCE0).copy(alpha = 0.8f) else Color(0xFF372C7F).copy(alpha = 0.3f),
+        spotColor = if (isDark) Color(0xFFD4BCE0).copy(alpha = 0.7f) else Color(0xFF5E52B8).copy(alpha = 0.2f)
     )
     .background(
         brush = if (isDark) {
@@ -113,16 +110,16 @@ fun Modifier.clayButtonPrimary(
         shape = shape
     )
     .drawBehind {
-        val topHighlight = if (isDark) Color.White.copy(alpha = 0.75f) else Color(0xFFD4BCE0).copy(alpha = 0.3f)
-        val bottomShadow = if (isDark) Color(0xFF1D1A45).copy(alpha = 0.8f) else Color(0xFF1D1A45).copy(alpha = 0.2f)
-        val cornerRadius = 22.dp.toPx()
-        val steps = 5
+        val topHighlight = if (isDark) Color.White else Color.White
+        val bottomShadow = if (isDark) Color(0xFF1D1A45) else Color(0xFF372C7F)
+        val cornerRadius = 28.dp.toPx()
+        val steps = 6
 
         for (i in 0 until steps) {
             val progress = i.toFloat() / steps
-            val insetOffset = i.toFloat()
-            val lightAlpha = (1f - progress) * 0.3f
-            val darkAlpha = (1f - progress) * 0.2f
+            val insetOffset = i.toFloat() * 1.2f
+            val lightAlpha = (1f - progress) * (if (isDark) 0.6f else 0.6f)
+            val darkAlpha = (1f - progress) * (if (isDark) 0.6f else 0.5f)
 
             drawRoundRect(
                 brush = Brush.linearGradient(
@@ -133,7 +130,7 @@ fun Modifier.clayButtonPrimary(
                 topLeft = Offset(insetOffset, insetOffset),
                 size = Size(size.width - insetOffset * 2, size.height - insetOffset * 2),
                 cornerRadius = CornerRadius(maxOf(0f, cornerRadius - insetOffset)),
-                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 1.2f)
+                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 2.0f)
             )
             drawRoundRect(
                 brush = Brush.linearGradient(
@@ -144,7 +141,7 @@ fun Modifier.clayButtonPrimary(
                 topLeft = Offset(insetOffset, insetOffset),
                 size = Size(size.width - insetOffset * 2, size.height - insetOffset * 2),
                 cornerRadius = CornerRadius(maxOf(0f, cornerRadius - insetOffset)),
-                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 1.2f)
+                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 2.0f)
             )
         }
     }
@@ -154,10 +151,10 @@ fun Modifier.clayButtonSecondary(
     shape: androidx.compose.ui.graphics.Shape
 ): Modifier = this
     .shadow(
-        elevation = 20.dp,
+        elevation = 10.dp,
         shape = shape,
-        ambientColor = if (isDark) Color.Black.copy(alpha = 0.85f) else Color(0xFF372C7F).copy(alpha = 0.22f),
-        spotColor = if (isDark) Color(0xFF372C7F).copy(alpha = 0.5f) else Color(0xFF5E52B8).copy(alpha = 0.02f)
+        ambientColor = if (isDark) Color.Black.copy(alpha = 0.85f) else Color(0xFF372C7F).copy(alpha = 0.08f),
+        spotColor = if (isDark) Color(0xFF372C7F).copy(alpha = 0.7f) else Color(0xFF5E52B8).copy(alpha = 0.1f)
     )
     .background(
         brush = if (isDark) {
@@ -176,16 +173,16 @@ fun Modifier.clayButtonSecondary(
         shape = shape
     )
     .drawBehind {
-        val topLeftLight = if (isDark) Color(0xFFD4BCE0).copy(alpha = 0.25f) else Color(0xFF685CC7).copy(alpha = 0.2f)
-        val bottomShadow = if (isDark) Color.Black.copy(alpha = 0.6f) else Color(0xFF372C7F).copy(alpha = 0.06f)
-        val cornerRadius = 28.dp.toPx()
-        val steps = 5
+        val topLeftLight = if (isDark) Color(0xFFD4BCE0) else Color.White
+        val bottomShadow = if (isDark) Color.Black else Color(0xFF372C7F)
+        val cornerRadius = 22.dp.toPx()
+        val steps = 6
 
         for (i in 0 until steps) {
             val progress = i.toFloat() / steps
-            val insetOffset = i.toFloat()
-            val lightAlpha = (1f - progress) * 0.3f
-            val darkAlpha = (1f - progress) * 0.15f
+            val insetOffset = i.toFloat() * 1.2f
+            val lightAlpha = (1f - progress) * (if (isDark) 0.6f else 0.7f)
+            val darkAlpha = (1f - progress) * (if (isDark) 0.6f else 0.35f)
 
             drawRoundRect(
                 brush = Brush.linearGradient(
@@ -196,7 +193,7 @@ fun Modifier.clayButtonSecondary(
                 topLeft = Offset(insetOffset, insetOffset),
                 size = Size(size.width - insetOffset * 2, size.height - insetOffset * 2),
                 cornerRadius = CornerRadius(maxOf(0f, cornerRadius - insetOffset)),
-                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 1.2f)
+                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 2.0f)
             )
             drawRoundRect(
                 brush = Brush.linearGradient(
@@ -207,7 +204,7 @@ fun Modifier.clayButtonSecondary(
                 topLeft = Offset(insetOffset, insetOffset),
                 size = Size(size.width - insetOffset * 2, size.height - insetOffset * 2),
                 cornerRadius = CornerRadius(maxOf(0f, cornerRadius - insetOffset)),
-                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 1.2f)
+                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 2.0f)
             )
         }
     }
@@ -221,14 +218,14 @@ fun Modifier.clayInset(
         shape = shape
     )
     .drawBehind {
-        val topDarkShadow = if (isDark) Color.Black.copy(alpha = 0.85f) else Color(0xFF372C7F).copy(alpha = 0.12f)
+        val topDarkShadow = if (isDark) Color.Black.copy(alpha = 0.85f) else Color(0xFF372C7F).copy(alpha = 0.25f)
         val cornerRadius = 16.dp.toPx()
-        val steps = 4
+        val steps = 5
 
-        for (i in 0 until steps) {
+        for (i: Int in 0 until steps) {
             val progressVal = i.toFloat() / steps
-            val insetOffset = i.toFloat()
-            val alphaFactor = (1f - progressVal) * (if (isDark) 0.65f else 0.2f)
+            val insetOffset = i.toFloat() * 1.2f
+            val alphaFactor = (1f - progressVal) * (if (isDark) 0.75f else 0.5f)
 
             drawRoundRect(
                 brush = Brush.linearGradient(
@@ -239,7 +236,7 @@ fun Modifier.clayInset(
                 topLeft = Offset(insetOffset, insetOffset),
                 size = Size(size.width - insetOffset * 2, size.height - insetOffset * 2),
                 cornerRadius = CornerRadius(maxOf(0f, cornerRadius - insetOffset)),
-                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 1.2f)
+                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 2.0f)
             )
         }
     }

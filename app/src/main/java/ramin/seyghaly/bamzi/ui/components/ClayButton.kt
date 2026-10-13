@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
@@ -33,9 +34,10 @@ fun ClayPrimaryButton(
     icon: ImageVector? = null,
     enabled: Boolean = true
 ) {
-    val shape = RoundedCornerShape(22.dp)
+    val shape = RoundedCornerShape(28.dp)
     Box(
         modifier = modifier
+            .shadow(elevation = 10.dp, shape = shape)
             .clip(shape)
             .clayButtonPrimary(isDark = isDark, shape = shape)
             .clickable(enabled = enabled, onClick = onClick)
@@ -72,9 +74,10 @@ fun ClaySecondaryButton(
     icon: ImageVector? = null,
     enabled: Boolean = true
 ) {
-    val shape = RoundedCornerShape(22.dp)
+    val shape = RoundedCornerShape(28.dp)
     Box(
         modifier = modifier
+            .shadow(elevation = 10.dp, shape = shape)
             .clip(shape)
             .clayButtonSecondary(isDark = isDark, shape = shape)
             .clickable(enabled = enabled, onClick = onClick)
