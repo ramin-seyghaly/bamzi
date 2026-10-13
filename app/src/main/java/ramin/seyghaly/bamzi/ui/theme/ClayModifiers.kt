@@ -151,7 +151,7 @@ fun Modifier.clayButtonSecondary(
     shape: androidx.compose.ui.graphics.Shape
 ): Modifier = this
     .shadow(
-        elevation = 10.dp,
+        elevation = 5.dp,
         shape = shape,
         ambientColor = if (isDark) Color.Black.copy(alpha = 0.85f) else Color(0xFF455A9E).copy(alpha = 0.08f),
         spotColor = if (isDark) Color(0xFF455A9E).copy(alpha = 0.7f) else Color(0xFF203370).copy(alpha = 0.1f)
@@ -214,7 +214,19 @@ fun Modifier.clayInset(
     shape: androidx.compose.ui.graphics.Shape
 ): Modifier = this
     .background(
-        color = if (isDark) Color(0xFF222B5C) else Color(0xFF9EC2EE),
+        brush = if (isDark) {
+            Brush.linearGradient(
+                colors = listOf(Color(0xFF28346E), Color(0xFF1D2650)),
+                start = Offset(0f, 0f),
+                end = Offset(500f, 500f)
+            )
+        } else {
+            Brush.linearGradient(
+                colors = listOf(Color(0xFFBDD9F5), Color(0xFFA5C8EF)),
+                start = Offset(0f, 0f),
+                end = Offset(500f, 500f)
+            )
+        },
         shape = shape
     )
     .drawBehind {

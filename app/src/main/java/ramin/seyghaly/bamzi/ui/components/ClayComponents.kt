@@ -211,7 +211,7 @@ fun ClaySecondaryButton(
 
     Box(
         modifier = modifier
-            .shadow(elevation = 10.dp, shape = shape)
+            .shadow(elevation = 5.dp, shape = shape)
             .clip(shape)
             .clayButtonSecondary(isDark = isDark, shape = shape)
             .clayClickable(enabled = enabled, onClick = onClick)
@@ -248,7 +248,7 @@ fun ClayInsetBox(
 ) {
     Box(
         modifier = modifier
-            .shadow(elevation = 10.dp, shape = shape)
+            .shadow(elevation = 5.dp, shape = shape)
             .clip(shape)
             .clayInset(isDark = isDark, shape = shape)
             .padding(horizontal = 16.dp, vertical = 12.dp)
@@ -272,7 +272,7 @@ fun ClayTextField(
 
     Box(
         modifier = modifier
-            .shadow(elevation = 10.dp, shape = shape)
+            .shadow(elevation = 5.dp, shape = shape)
             .fillMaxWidth()
             .clip(shape)
             .clayInset(isDark = isDark, shape = shape)
@@ -367,12 +367,15 @@ fun TagBadge(
     isPrimary: Boolean = true
 ) {
     val textColor = if (isPrimary) MaterialTheme.colorScheme.primary else Color(0xFFF59E0B)
-    val alphaColor = textColor.copy(alpha = 0.15f)
 
     Box(
         modifier = modifier
             .clip(CircleShape)
-            .background(alphaColor)
+            .background(
+                brush = Brush.linearGradient(
+                    colors = listOf(textColor.copy(alpha = 0.12f), textColor.copy(alpha = 0.22f))
+                )
+            )
             .border(width = 1.dp, color = textColor.copy(alpha = 0.25f), shape = CircleShape)
             .padding(horizontal = 12.dp, vertical = 5.dp),
         contentAlignment = Alignment.Center

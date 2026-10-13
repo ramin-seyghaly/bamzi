@@ -37,7 +37,7 @@ fun ClayPrimaryButton(
     val shape = RoundedCornerShape(28.dp)
     Box(
         modifier = modifier
-            .shadow(elevation = 10.dp, shape = shape)
+            .shadow(elevation = 5.dp, shape = shape)
             .clip(shape)
             .clayButtonPrimary(isDark = isDark, shape = shape)
             .clickable(enabled = enabled, onClick = onClick)
@@ -77,7 +77,7 @@ fun ClaySecondaryButton(
     val shape = RoundedCornerShape(28.dp)
     Box(
         modifier = modifier
-            .shadow(elevation = 10.dp, shape = shape)
+            .shadow(elevation = 5.dp, shape = shape)
             .clip(shape)
             .clayButtonSecondary(isDark = isDark, shape = shape)
             .clickable(enabled = enabled, onClick = onClick)

@@ -122,7 +122,7 @@ fun OfflineGameCard(
     Box(
         modifier = modifier
             .width(300.dp)
-            .shadow(elevation = 10.dp, shape = shape)
+            .shadow(elevation = 5.dp, shape = shape)
             .clip(shape)
             .clayCard(isDark = isDark, shape = shape, elevation = 28.dp)
             .padding(18.dp)

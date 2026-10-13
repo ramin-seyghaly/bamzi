@@ -42,7 +42,7 @@ fun BamziToolbar(
     ) {
         Row(
             modifier = Modifier
-                .shadow(elevation = 10.dp, shape = shape)
+                .shadow(elevation = 5.dp, shape = shape)
                 .fillMaxWidth()
                 .clip(shape)
                 .clayCard(isDark = isDark, shape = shape, elevation = 16.dp)
@@ -53,7 +53,7 @@ fun BamziToolbar(
             // Left side: Theme Toggle Circular Button
             Box(
                 modifier = Modifier
-                    .shadow(elevation = 10.dp, shape = shape)
+                    .shadow(elevation = 5.dp, shape = shape)
                     .size(38.dp)
                     .clip(CircleShape)
                     .clayButtonSecondary(isDark = isDark, shape = CircleShape)
