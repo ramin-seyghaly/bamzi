@@ -1,0 +1,29 @@
+# Tasks - Game Hub Implementation
+
+- [ ] 1. Dependency Management
+    - [ ] Add dependencies to `libs.versions.toml`
+    - [ ] Update `build.gradle.kts` (root)
+    - [ ] Update `app/build.gradle.kts`
+- [ ] 2. Infrastructure Setup
+    - [ ] Create `BamziApplication.kt`
+    - [ ] Update `AndroidManifest.xml`
+- [ ] 3. Theme & Resources
+    - [ ] Update `Color.kt`
+    - [ ] Update `Theme.kt`
+- [ ] 4. UI Components
+    - [ ] Create `HomeHeader.kt`
+    - [ ] Create `HomeBanner.kt`
+    - [ ] Create `QuickActionButton.kt`
+    - [ ] Create `GameCard.kt`
+    - [ ] Create `ToolCard.kt`
+- [ ] 5. Home Screen Logic
+    - [ ] Create `HomeUiState.kt`
+    - [ ] Create `HomeViewModel.kt`
+- [ ] 6. Home Screen UI
+    - [ ] Implement `HomeScreen.kt` layout
+- [ ] 7. Navigation & MainActivity
+    - [ ] Set up `NavGraph.kt`
+    - [ ] Update `MainActivity.kt`
+- [ ] 8. Final Verification
+    - [ ] Gradle Build
+    - [ ] UI Check

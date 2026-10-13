@@ -1,0 +1,4 @@
+- [x] Standardize spacing in `HomeScreen.kt` grid
+- [x] Fix height and text wrapping in `GameCard.kt`
+- [x] Make `ToolCard.kt` fill grid width and remove redundant padding
+- [x] Verify layout in Compose Preview

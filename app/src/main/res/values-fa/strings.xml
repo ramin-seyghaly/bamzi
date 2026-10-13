@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">بامزی</string>
+    <string name="game_hub">گیم‌هاب</string>
+    <string name="group_games">بازی‌های گروهی</string>
+    <string name="quick_settings">تنظیمات سریع بازی</string>
+    <string name="other_tools">ابزارهای دیگر</string>
+    <string name="data_management">مدیریت داده‌ها</string>
+    <string name="recent_games">آخرین بازی‌ها</string>
+
+    <string name="mafia">مافیا</string>
+    <string name="spy">جاسوس</string>
+    <string name="pantomime">پانتومیم</string>
+    <string name="mountain">تپه ندیده</string>
+    <string name="truth_dare">جرات یا حقیقت</string>
+
+    <string name="mafia_about">بازی گروهی در قالب تیمی</string>
+    <string name="spy_about">بازی گروهی در قالب انفرادی</string>
+    <string name="pantomime_about">پر حرکت</string>
+    <string name="mountain_about">فان و سرگرم کننده</string>
+    <string name="truth_dare_about">معمایی و هیجان انگیز</string>
+
+    <string name="team_creation">ساخت تیم</string>
+    <string name="player_creation">ساخت بازیکن</string>
+    <string name="role_creation">ساخت نقش</string>
+    <string name="word_creation">ساخت کلمه</string>
+
+    <string name="leaderboard">جدول رده بندی</string>
+    <string name="lottery">قرعه کشی</string>
+    <string name="dong">دونگ</string>
+    <string name="dice">تاس</string>
+    <string name="coin">سکه</string>
+    <string name="turn_scheduling">نوبت دهی</string>
+
+    <string name="import_db">وارد کردن دیتابیس</string>
+    <string name="export_db">خروجی دیتابیس</string>
+
+    <string name="finished">به اتمام رسیده</string>
+    <string name="game_in_progress">نا تمام مانده</string>
+    <string name="continue_game">ادامه</string>
+
+    <string name="whatsapp">واتس‌اپ</string>
+    <string name="telegram">تلگرام</string>
+    <string name="youtube">یوتیوب</string>
+</resources>

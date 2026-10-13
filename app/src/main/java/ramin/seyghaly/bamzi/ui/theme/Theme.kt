@@ -1,5 +1,6 @@
 package ramin.seyghaly.bamzi.ui.theme
 
+import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -8,34 +9,40 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = BamziDarkPrimary,
-    onPrimary = BamziDarkTextOnPrimary,
-    primaryContainer = BamziDarkDeep,
-    secondary = BamziDarkPrimaryLight,
-    background = BamziDarkBgPrimary,
-    surface = BamziDarkBgSurface,
-    onBackground = BamziDarkTextMain,
-    onSurface = BamziDarkTextMain
+    primary = OrangePrimary,
+    onPrimary = Color.Black,
+    secondary = OrangeLight,
+    onSecondary = Color.Black,
+    background = BackgroundDark,
+    surface = SurfaceDark,
+    onBackground = TextLight,
+    onSurface = TextLight,
+    surfaceVariant = Color(0xFF2C2C2C),
+    onSurfaceVariant = TextGreyDark
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = BamziLightPrimary,
-    onPrimary = BamziLightTextOnPrimary,
-    primaryContainer = BamziLightDeep,
-    secondary = BamziLightPrimaryLight,
-    background = BamziLightBgPrimary,
-    surface = BamziLightBgSurface,
-    onBackground = BamziLightTextMain,
-    onSurface = BamziLightTextMain
+    primary = OrangePrimary,
+    onPrimary = Color.White,
+    secondary = OrangeLight,
+    onSecondary = Color.White,
+    background = BackgroundLight,
+    surface = SurfaceLight,
+    onBackground = TextDark,
+    onSurface = TextDark,
+    surfaceVariant = Color(0xFFF5F5F5),
+    onSurfaceVariant = TextGrey
 )
 
 @Composable
 fun BamziTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = false, // Disabled to preserve Bamzi custom claymorphic brand palette
+    // Dynamic color is available on Android 12+
+    dynamicColor: Boolean = false, // Set to false to prioritize brand colors
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -43,6 +50,7 @@ fun BamziTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
+
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }

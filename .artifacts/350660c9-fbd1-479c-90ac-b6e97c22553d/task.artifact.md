@@ -1,0 +1,5 @@
+- [ ] Update `Color.kt` with new brand colors and pastel tones
+- [ ] Update `HomeUiState.kt` and `HomeViewModel.kt` data structures and content
+- [ ] Update UI Components (`GameCard`, `ToolCard`, `QuickActionButton`, `HomeBanner`)
+- [ ] Update `HomeScreen.kt` layout and `RecentGameCard` logic
+- [ ] Verify build and visual previews
