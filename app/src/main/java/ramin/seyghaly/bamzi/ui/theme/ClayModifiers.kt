@@ -25,19 +25,19 @@ fun Modifier.clayCard(
     .shadow(
         elevation = elevation,
         shape = shape,
-        ambientColor = if (isDark) Color.Black.copy(alpha = 0.95f) else Color(0xFF372C7F).copy(alpha = 0.22f),
-        spotColor = if (isDark) Color(0xFF433892).copy(alpha = 0.85f) else Color(0xFF5E52B8).copy(alpha = 0.15f)
+        ambientColor = if (isDark) Color.Black.copy(alpha = 0.95f) else Color(0xFF455A9E).copy(alpha = 0.22f),
+        spotColor = if (isDark) Color(0xFF566DB8).copy(alpha = 0.85f) else Color(0xFF203370).copy(alpha = 0.15f)
     )
     .background(
         brush = if (isDark) {
             Brush.linearGradient(
-                colors = listOf(Color(0xFF372C7F), Color(0xFF1D1A45)),
+                colors = listOf(Color(0xFF455A9E), Color(0xFF2B376C)),
                 start = Offset(0f, 0f),
                 end = Offset(1000f, 1000f)
             )
         } else {
             Brush.linearGradient(
-                colors = listOf(Color(0xFFFFFFFF), Color(0xFFF4F0FF)),
+                colors = listOf(Color(0xFFFFFFFF), Color(0xFFB0C8EC)),
                 start = Offset(0f, 0f),
                 end = Offset(1000f, 1000f)
             )
@@ -45,8 +45,8 @@ fun Modifier.clayCard(
         shape = shape
     )
     .drawBehind {
-        val topLeftLight = if (isDark) Color(0xFF28235A) else Color(0xC3F7F7FF)
-        val bottomRightDark = if (isDark) Color(0xE0211A2A) else Color(0xFFC3C0CB)
+        val topLeftLight = if (isDark) Color(0xFF374782) else Color(0xC3C4D8F0)
+        val bottomRightDark = if (isDark) Color(0xE02B376C) else Color(0xFF88A2BC)
 
         val cornerRadius = 28.dp.toPx()
         val steps = 6 // Bolder steps
@@ -90,19 +90,19 @@ fun Modifier.clayButtonPrimary(
     .shadow(
         elevation = 16.dp,
         shape = shape,
-        ambientColor = if (isDark) Color(0xFFD4BCE0).copy(alpha = 0.8f) else Color(0xFF372C7F).copy(alpha = 0.3f),
-        spotColor = if (isDark) Color(0xFFD4BCE0).copy(alpha = 0.7f) else Color(0xFF5E52B8).copy(alpha = 0.2f)
+        ambientColor = if (isDark) Color(0xFFD4E3FF).copy(alpha = 0.8f) else Color(0xFF455A9E).copy(alpha = 0.3f),
+        spotColor = if (isDark) Color(0xFFD4E3FF).copy(alpha = 0.7f) else Color(0xFF203370).copy(alpha = 0.2f)
     )
     .background(
         brush = if (isDark) {
             Brush.linearGradient(
-                colors = listOf(Color(0xFFD4BCE0), Color(0xFFB597C4), Color(0xFF4E489E)),
+                colors = listOf(Color(0xFFD4E3FF), Color(0xFFACC6E0), Color(0xFF566DB8)),
                 start = Offset(0f, 0f),
                 end = Offset(500f, 500f)
             )
         } else {
             Brush.linearGradient(
-                colors = listOf(Color(0xFF685CC7), Color(0xFF5E52B8)),
+                colors = listOf(Color(0xFF2A3E8A), Color(0xFF203370)),
                 start = Offset(0f, 0f),
                 end = Offset(500f, 500f)
             )
@@ -111,7 +111,7 @@ fun Modifier.clayButtonPrimary(
     )
     .drawBehind {
         val topHighlight = if (isDark) Color.White else Color.White
-        val bottomShadow = if (isDark) Color(0xFF1D1A45) else Color(0xFF372C7F)
+        val bottomShadow = if (isDark) Color(0xFF2B376C) else Color(0xFF455A9E)
         val cornerRadius = 28.dp.toPx()
         val steps = 6
 
@@ -153,19 +153,19 @@ fun Modifier.clayButtonSecondary(
     .shadow(
         elevation = 10.dp,
         shape = shape,
-        ambientColor = if (isDark) Color.Black.copy(alpha = 0.85f) else Color(0xFF372C7F).copy(alpha = 0.08f),
-        spotColor = if (isDark) Color(0xFF372C7F).copy(alpha = 0.7f) else Color(0xFF5E52B8).copy(alpha = 0.1f)
+        ambientColor = if (isDark) Color.Black.copy(alpha = 0.85f) else Color(0xFF455A9E).copy(alpha = 0.08f),
+        spotColor = if (isDark) Color(0xFF455A9E).copy(alpha = 0.7f) else Color(0xFF203370).copy(alpha = 0.1f)
     )
     .background(
         brush = if (isDark) {
             Brush.linearGradient(
-                colors = listOf(Color(0xFF433892), Color(0xFF372C7F)),
+                colors = listOf(Color(0xFF566DB8), Color(0xFF455A9E)),
                 start = Offset(0f, 0f),
                 end = Offset(500f, 500f)
             )
         } else {
             Brush.linearGradient(
-                colors = listOf(Color(0xFFFFFFFF), Color(0xFFF9F6FF)),
+                colors = listOf(Color(0xFFFFFFFF), Color(0xFFBFD4F0)),
                 start = Offset(0f, 0f),
                 end = Offset(500f, 500f)
             )
@@ -173,8 +173,8 @@ fun Modifier.clayButtonSecondary(
         shape = shape
     )
     .drawBehind {
-        val topLeftLight = if (isDark) Color(0xFFD4BCE0) else Color.White
-        val bottomShadow = if (isDark) Color.Black else Color(0xFF372C7F)
+        val topLeftLight = if (isDark) Color(0xFFD4E3FF) else Color.White
+        val bottomShadow = if (isDark) Color.Black else Color(0xFF455A9E)
         val cornerRadius = 22.dp.toPx()
         val steps = 6
 
@@ -214,11 +214,11 @@ fun Modifier.clayInset(
     shape: androidx.compose.ui.graphics.Shape
 ): Modifier = this
     .background(
-        color = if (isDark) Color(0xFF18153D) else Color(0xFFE8E2FF),
+        color = if (isDark) Color(0xFF222B5C) else Color(0xFF9EC2EE),
         shape = shape
     )
     .drawBehind {
-        val topDarkShadow = if (isDark) Color.Black.copy(alpha = 0.85f) else Color(0xFF372C7F).copy(alpha = 0.25f)
+        val topDarkShadow = if (isDark) Color.Black.copy(alpha = 0.85f) else Color(0xFF455A9E).copy(alpha = 0.25f)
         val cornerRadius = 16.dp.toPx()
         val steps = 5
 
