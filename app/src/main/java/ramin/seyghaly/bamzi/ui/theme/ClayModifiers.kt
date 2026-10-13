@@ -17,7 +17,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 /**
- * Authentic Claymorphism Modifiers: Extra faint, subtle white highlight and standard dark shadow.
+ * Authentic Claymorphism Modifiers: Web-matching 145deg surface gradient (white to #F5F9FF in light mode)
+ * with sharp directional inner strokes for true 3D clay effect.
  */
 
 fun Modifier.clayCard(
@@ -32,12 +33,25 @@ fun Modifier.clayCard(
         spotColor = if (isDark) Color(0x4049108B) else Color(0x1F49108B)
     )
     .background(
-        color = if (isDark) Color(0xFF1E1038) else Color(0xFFFFFFFF),
+        brush = if (isDark) {
+            Brush.linearGradient(
+                colors = listOf(Color(0xFF251445), Color(0xFF1A0D32)),
+                start = Offset(0f, 0f),
+                end = Offset(1000f, 1000f)
+            )
+        } else {
+            // Authentic web app --clay-card-bg: linear-gradient(145deg, #FFFFFF 0%, #F5F9FF 100%)
+            Brush.linearGradient(
+                colors = listOf(Color(0xFFFFFFFF), Color(0xFFF5F9FF)),
+                start = Offset(0f, 0f),
+                end = Offset(1000f, 1000f)
+            )
+        },
         shape = shape
     )
     .drawBehind {
-        val topLeftLight = if (isDark) Color.White.copy(alpha = 0.15f) else Color.White.copy(alpha = 0.8f)
-        val bottomRightDark = if (isDark) Color.Black.copy(alpha = 0.95f) else Color(0xFF49108B)
+        val topLeftLight = if (isDark) Color.White.copy(alpha = 0.3f) else Color.White.copy(alpha = 0.95f)
+        val bottomRightDark = if (isDark) Color.Black.copy(alpha = 0.65f) else Color(0xFF49108B)
 
         val cornerRadius = 42.dp.toPx()
         val steps = 8
@@ -45,8 +59,8 @@ fun Modifier.clayCard(
         for (i in 0 until steps) {
             val progress = i.toFloat() / steps
             val insetOffset = i.toFloat()
-            val lightAlpha = (1f - progress) * 0.12f // Extra faint and subtle white highlight
-            val darkAlpha = (1f - progress) * 0.5f  // 50% opacity for dark shadow
+            val lightAlpha = (1f - progress) * 0.4f
+            val darkAlpha = (1f - progress) * 0.5f
 
             drawRoundRect(
                 brush = Brush.linearGradient(
@@ -92,7 +106,7 @@ fun Modifier.clayButtonPrimary(
         shape = shape
     )
     .drawBehind {
-        val topHighlight = Color.White.copy(alpha = 0.8f)
+        val topHighlight = Color.White.copy(alpha = 1f)
         val bottomShadow = Color(0xFF1D0338)
         val cornerRadius = 22.dp.toPx()
         val steps = 8
@@ -100,8 +114,8 @@ fun Modifier.clayButtonPrimary(
         for (i in 0 until steps) {
             val progress = i.toFloat() / steps
             val insetOffset = i.toFloat()
-            val lightAlpha = (1f - progress) * 0.12f // Extra faint and subtle white highlight
-            val darkAlpha = (1f - progress) * 0.5f  // 50% opacity for dark shadow
+            val lightAlpha = (1f - progress) * 0.5f
+            val darkAlpha = (1f - progress) * 0.5f
 
             drawRoundRect(
                 brush = Brush.linearGradient(
@@ -139,11 +153,23 @@ fun Modifier.clayButtonSecondary(
         spotColor = if (isDark) Color(0x2649108B) else Color.White
     )
     .background(
-        color = if (isDark) Color(0xFF2D1852) else Color(0xFFFFFFFF),
+        brush = if (isDark) {
+            Brush.linearGradient(
+                colors = listOf(Color(0xFF2D1852), Color(0xFF1E0E38)),
+                start = Offset(0f, 0f),
+                end = Offset(500f, 500f)
+            )
+        } else {
+            Brush.linearGradient(
+                colors = listOf(Color(0xFFFFFFFF), Color(0xFFF3F7FF)),
+                start = Offset(0f, 0f),
+                end = Offset(500f, 500f)
+            )
+        },
         shape = shape
     )
     .drawBehind {
-        val topLeftLight = if (isDark) Color.White.copy(alpha = 0.2f) else Color.White.copy(alpha = 0.8f)
+        val topLeftLight = if (isDark) Color.White.copy(alpha = 0.3f) else Color.White.copy(alpha = 1f)
         val bottomShadow = if (isDark) Color.Black.copy(alpha = 0.65f) else Color(0xFF49108B)
         val cornerRadius = 22.dp.toPx()
         val steps = 8
@@ -151,8 +177,8 @@ fun Modifier.clayButtonSecondary(
         for (i in 0 until steps) {
             val progress = i.toFloat() / steps
             val insetOffset = i.toFloat()
-            val lightAlpha = (1f - progress) * 0.12f // Extra faint and subtle white highlight
-            val darkAlpha = (1f - progress) * 0.5f  // 50% opacity for dark shadow
+            val lightAlpha = (1f - progress) * 0.5f
+            val darkAlpha = (1f - progress) * 0.5f
 
             drawRoundRect(
                 brush = Brush.linearGradient(
