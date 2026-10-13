@@ -1,0 +1,70 @@
+<!-- مودال ایجاد و ورود به اتاق بازی آنلاین (Online Room Modal) -->
+<div class="clay-modal-backdrop" id="roomModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="roomModalTitle">
+    <div class="clay-modal" style="max-width: 480px;">
+        <button type="button" class="clay-modal-close" data-close-modal="roomModalBackdrop" aria-label="بستن پنجره">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+
+        <div class="clay-modal-header">
+            <div class="clay-badge clay-badge-online" style="margin-bottom: 8px;">
+                <span class="pulse-dot"></span>
+                لابی بازی‌های آنلاین
+            </div>
+            <h3 class="clay-modal-title" id="roomModalTitle">ورود به نبرد آنلاین</h3>
+            <p class="clay-modal-subtitle">اتاق جدید بسازید یا با کد دعوت به دوستانتان ملحق شوید</p>
+        </div>
+
+        <!-- تب‌های سوییچ بین ساخت اتاق و ورود با کد -->
+        <div style="display: flex; gap: 8px; margin-bottom: 20px; background: var(--clay-inset-bg); padding: 5px; border-radius: var(--radius-full); box-shadow: var(--clay-inset-shadow);">
+            <button type="button" id="tabCreateRoom" class="clay-btn clay-btn-primary clay-btn-sm" style="flex: 1; border-radius: var(--radius-full);">
+                ساخت اتاق جدید
+            </button>
+            <button type="button" id="tabJoinRoom" class="clay-btn clay-btn-secondary clay-btn-sm" style="flex: 1; border-radius: var(--radius-full);">
+                ورود با کد اتاق
+            </button>
+        </div>
+
+        <!-- فرم ۱: ایجاد اتاق -->
+        <form id="createRoomForm" method="post" action="/api/games/rooms/create/">
+            {% csrf_token %}
+            <div class="clay-form-group">
+                <label for="roomGameSelect" class="clay-form-label">انتخاب بازی</label>
+                <select id="roomGameSelect" name="game_code" class="clay-form-input" style="cursor: pointer;">
+                    <option value="chess">شطرنج آنلاین (Chess)</option>
+                    <option value="connect4">چهار در یک خط (Connect 4)</option>
+                    <option value="tictactoe">دوز آنلاین (Tic-Tac-Toe)</option>
+                </select>
+            </div>
+
+            <div class="clay-form-group" style="flex-direction: row; align-items: center; justify-content: space-between; margin-top: 10px;">
+                <label for="isPrivateRoom" class="clay-form-label" style="margin: 0; cursor: pointer;">
+                    اتاق خصوصی (فقط با کد دعوت)
+                </label>
+                <input type="checkbox" id="isPrivateRoom" name="is_private" style="width: 20px; height: 20px; accent-color: var(--color-primary); cursor: pointer;">
+            </div>
+
+            <button type="submit" class="clay-btn clay-btn-primary" style="width: 100%; margin-top: 16px;">
+                ساخت اتاق و شروع بازی
+            </button>
+        </form>
+
+        <!-- فرم ۲: ورود با کد اتاق -->
+        <form id="joinRoomForm" style="display: none;">
+            <div class="clay-form-group">
+                <label for="joinRoomCode" class="clay-form-label">کد ۶ رقمی اتاق</label>
+                <input type="text" id="joinRoomCode" maxlength="10" placeholder="مثال: A3B91C" class="clay-form-input" style="text-align: center; font-family: var(--font-en); font-weight: 800; font-size: 18px; letter-spacing: 3px; text-transform: uppercase;">
+            </div>
+
+            <button type="button" id="btnSubmitJoinRoom" class="clay-btn clay-btn-primary" style="width: 100%; margin-top: 16px;">
+                پیوستن به بازی
+            </button>
+        </form>
+
+        <div class="clay-modal-footer">
+            <span>پس از ایجاد اتاق، کد اتاق برای دعوت حریف در اختیار شما قرار می‌گیرد.</span>
+        </div>
+    </div>
+</div>

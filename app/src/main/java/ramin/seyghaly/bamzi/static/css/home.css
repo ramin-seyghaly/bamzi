@@ -1,0 +1,861 @@
+/* ==========================================================================
+   بامزی (Bamzi) - استایل‌های اختصاصی صفحه اصلی (Home Page Sections)
+   پالت رنگی: #F3F8FF, #7E30E1, #49108B | استایل: Claymorphism
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ۱. بنر هیرو سه‌بعدی و تعاملی (Hero Banner)
+   -------------------------------------------------------------------------- */
+.hero-section {
+    padding: 60px 48px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+    background: var(--clay-card-bg);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hero-pill-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-title {
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: -0.03em;
+    color: var(--color-deep);
+}
+
+[data-theme="dark"] .hero-title {
+    color: var(--color-text-main);
+}
+
+.hero-description {
+    font-size: 16.5px;
+    line-height: 1.85;
+    color: var(--color-text-muted);
+    max-width: 580px;
+}
+
+.hero-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+/* کارت‌های آماری سریع در هیرو */
+.hero-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.hero-stat-item {
+    padding: 16px;
+    text-align: center;
+}
+
+.hero-stat-number {
+    font-family: var(--font-en);
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
+.hero-stat-label {
+    font-size: 12.5px;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* ویژوال سه‌بعدی سمت چپ هیرو */
+.hero-visual-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-visual-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 24px;
+    position: relative;
+    animation: clayFloat 6s ease-in-out infinite;
+}
+
+@keyframes clayFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(1deg);
+    }
+}
+
+.hero-visual-image {
+    width: 100%;
+    height: 240px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: #2E0A59;
+    box-shadow: 0 10px 24px rgba(73, 16, 139, 0.2);
+}
+
+.hero-visual-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-floating-badge-1 {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    animation: clayFloat 5s ease-in-out infinite 1s;
+}
+
+.hero-floating-badge-2 {
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+    animation: clayFloat 5.5s ease-in-out infinite 2s;
+}
+
+/* --------------------------------------------------------------------------
+   ۲. سربرگ‌های سکشن (Section Headers)
+   -------------------------------------------------------------------------- */
+.section-wrapper {
+    margin-bottom: 70px;
+}
+
+.section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.section-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.section-header-title {
+    font-size: 28px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-deep);
+}
+
+[data-theme="dark"] .section-header-title {
+    color: var(--color-text-main);
+}
+
+.section-header-desc {
+    font-size: 14.5px;
+    color: var(--color-text-muted);
+}
+
+.section-header-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   ۳. گرید و کارت‌های بازی‌های آنلاین (Online Games Cards)
+   -------------------------------------------------------------------------- */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.clay-game-card {
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    height: 100%;
+    border-radius: var(--radius-xl);
+    position: relative;
+    background: var(--clay-card-bg);
+}
+
+/* فریم پوستر بازی */
+.game-card-poster {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 18px;
+    background-color: #1E1038;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.game-card-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.clay-game-card:hover .game-card-poster img {
+    transform: scale(1.06);
+}
+
+/* بج‌های شناور روی پوستر */
+.game-card-badges {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.game-card-players-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    z-index: 2;
+}
+
+/* محتوای متنی کارت */
+.game-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+}
+
+.game-card-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-deep);
+    transition: color var(--transition-fast);
+}
+
+[data-theme="dark"] .game-card-title {
+    color: var(--color-text-main);
+}
+
+.clay-game-card:hover .game-card-title {
+    color: var(--color-primary);
+}
+
+.game-card-description {
+    font-size: 13.5px;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* اطلاعات و ویژگی‌های بازی */
+.game-card-features {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px;
+    margin-top: auto;
+    margin-bottom: 16px;
+    font-size: 12.5px;
+    color: var(--color-text-muted);
+}
+
+.game-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.game-feature-item svg {
+    width: 15px;
+    height: 15px;
+    stroke: var(--color-primary);
+}
+
+/* دکمه اکشن شروع بازی */
+.game-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.game-card-actions .clay-btn {
+    flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   ۴. گرید و کارت‌های بازی‌های آفلاین (Offline Games)
+   -------------------------------------------------------------------------- */
+.offline-card-poster {
+    background: linear-gradient(135deg, #2D1457 0%, #170A30 100%);
+}
+
+.clay-badge-ai {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(56, 189, 248, 0.25));
+    color: #0284C7;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   ۵. گرید کارت‌های جعبه‌ابزار گیمرها (Gamer Tools Grid)
+   -------------------------------------------------------------------------- */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 24px;
+}
+
+.clay-tool-card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background: var(--clay-card-bg);
+}
+
+.tool-icon-wrapper {
+    width: 90px;
+    height: 90px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    box-shadow: var(--clay-card-shadow), var(--clay-card-inset);
+    overflow: hidden;
+    transition: transform var(--transition-base);
+}
+
+.clay-tool-card:hover .tool-icon-wrapper {
+    transform: scale(1.1) rotate(4deg);
+}
+
+.tool-icon-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tool-card-title {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--color-deep);
+}
+
+[data-theme="dark"] .tool-card-title {
+    color: var(--color-text-main);
+}
+
+.tool-card-description {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 18px;
+    flex: 1;
+}
+
+.tool-card-action {
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   ۶. ویجت‌های تعاملی ابزارها در مودال (Interactive Tool Widgets)
+   -------------------------------------------------------------------------- */
+.tool-widget-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 10px;
+}
+
+/* ویجت تاس ۳بعدی */
+.dice-cube {
+    width: 110px;
+    height: 110px;
+    border-radius: 26px;
+    background: linear-gradient(145deg, #FFFFFF, #E8EFFE);
+    box-shadow: 10px 14px 28px rgba(73, 16, 139, 0.18),
+                inset 3px 3px 6px rgba(255, 255, 255, 0.9),
+                inset -3px -3px 6px rgba(73, 16, 139, 0.08);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 18px;
+    align-items: center;
+    justify-items: center;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dice-cube.rolling {
+    transform: rotate(360deg) scale(0.9);
+}
+
+.dice-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+}
+
+.dice-dot.active {
+    opacity: 1;
+}
+
+/* ویجت شیر یا خط */
+.coin-disc {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #FFE066, #D97706);
+    box-shadow: 0 10px 24px rgba(217, 119, 6, 0.4),
+                inset 4px 4px 8px rgba(255, 255, 255, 0.8),
+                inset -4px -4px 8px rgba(120, 53, 15, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #78350F;
+    font-weight: 900;
+    font-size: 24px;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.coin-disc.flipping {
+    transform: rotateY(720deg) scale(1.15);
+}
+
+/* ویجت اسکوربورد */
+.scoreboard-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 16px;
+}
+
+.score-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    flex: 1;
+}
+
+.score-value {
+    font-family: var(--font-en);
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+.score-btn-group {
+    display: flex;
+    gap: 8px;
+}
+
+.score-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+/* ویجت تایمر */
+.timer-display {
+    font-family: var(--font-en);
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--color-deep);
+    letter-spacing: 2px;
+    padding: 16px 32px;
+}
+
+[data-theme="dark"] .timer-display {
+    color: var(--color-text-main);
+}
+
+/* --------------------------------------------------------------------------
+   ۷. سکوی برترین‌ها و پودیوم ۳ نفر اول (Leaderboard Podium)
+   -------------------------------------------------------------------------- */
+.podium-wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+    margin: 50px auto 40px;
+    max-width: 860px;
+}
+
+.podium-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+    transition: transform var(--transition-base);
+}
+
+.podium-item:hover {
+    transform: translateY(-8px);
+}
+
+/* کارت بازیکن بالای ستون */
+.podium-player-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 16px;
+    gap: 8px;
+    position: relative;
+}
+
+.podium-avatar-wrapper {
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.podium-avatar-wrapper .clay-avatar {
+    width: 76px;
+    height: 76px;
+    box-shadow: 0 10px 24px rgba(73, 16, 139, 0.2), var(--clay-card-inset);
+}
+
+.podium-rank-1 .podium-avatar-wrapper .clay-avatar {
+    width: 96px;
+    height: 96px;
+    border: 3px solid #F59E0B;
+    box-shadow: 0 14px 32px rgba(245, 158, 11, 0.35), var(--clay-card-inset);
+}
+
+.podium-trophy-badge {
+    position: absolute;
+    bottom: -6px;
+    right: -6px;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-full);
+    background: var(--clay-card-bg);
+    box-shadow: var(--clay-btn-secondary-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.podium-player-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--color-deep);
+}
+
+[data-theme="dark"] .podium-player-name {
+    color: var(--color-text-main);
+}
+
+.podium-rank-1 .podium-player-name {
+    font-size: 19px;
+}
+
+.podium-rating-badge {
+    font-family: var(--font-en);
+    font-weight: 900;
+    font-size: 14px;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    background: var(--clay-btn-primary-bg);
+    color: #FFF;
+    box-shadow: 0 6px 14px var(--color-primary-glow);
+}
+
+/* ستون‌های فیزیکی سکو (Clay Pillars) */
+.podium-pillar {
+    width: 100%;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 18px;
+    box-shadow: var(--clay-card-shadow), var(--clay-card-inset);
+    border: 1px solid var(--color-border);
+}
+
+.podium-pillar-num {
+    font-family: var(--font-en);
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.85;
+}
+
+.podium-pillar-label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 6px;
+    opacity: 0.9;
+}
+
+/* ارتفاع و استایل رتبه ۱ (طلا) */
+.podium-rank-1 {
+    order: 2;
+    z-index: 3;
+}
+
+.podium-rank-1 .podium-pillar {
+    height: 190px;
+    background: linear-gradient(180deg, rgba(245, 158, 11, 0.25) 0%, var(--clay-card-bg) 100%);
+    border-top: 3px solid #F59E0B;
+}
+
+.podium-rank-1 .podium-pillar-num {
+    color: #F59E0B;
+}
+
+/* ارتفاع و استایل رتبه ۲ (نقره) */
+.podium-rank-2 {
+    order: 1;
+}
+
+.podium-rank-2 .podium-pillar {
+    height: 140px;
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0.2) 0%, var(--clay-card-bg) 100%);
+    border-top: 3px solid #94A3B8;
+}
+
+.podium-rank-2 .podium-pillar-num {
+    color: #64748B;
+}
+
+/* ارتفاع و استایل رتبه ۳ (برنز) */
+.podium-rank-3 {
+    order: 3;
+}
+
+.podium-rank-3 .podium-pillar {
+    height: 110px;
+    background: linear-gradient(180deg, rgba(217, 119, 6, 0.2) 0%, var(--clay-card-bg) 100%);
+    border-top: 3px solid #D97706;
+}
+
+.podium-rank-3 .podium-pillar-num {
+    color: #B45309;
+}
+
+/* --------------------------------------------------------------------------
+   ۸. جدول رتبه‌های بعدی لیدربورد (Leaderboard Table)
+   -------------------------------------------------------------------------- */
+.leaderboard-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.leaderboard-row {
+    display: grid;
+    grid-template-columns: 60px 2.2fr 1.2fr 1fr 120px;
+    align-items: center;
+    padding: 14px 22px;
+    background: var(--clay-card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--clay-card-shadow), var(--clay-card-inset);
+    border: 1px solid var(--color-border);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.leaderboard-row:hover {
+    transform: translateX(-4px) scale(1.005);
+    box-shadow: var(--clay-card-hover-shadow), var(--clay-card-inset);
+}
+
+.leaderboard-rank-pill {
+    font-family: var(--font-en);
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--color-text-muted);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--clay-inset-bg);
+    box-shadow: var(--clay-inset-shadow);
+}
+
+.leaderboard-player-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.leaderboard-player-info .clay-avatar {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+}
+
+.leaderboard-name {
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--color-deep);
+}
+
+[data-theme="dark"] .leaderboard-name {
+    color: var(--color-text-main);
+}
+
+.leaderboard-username {
+    font-family: var(--font-en);
+    font-size: 12px;
+    color: var(--color-text-muted);
+}
+
+.leaderboard-stat-item {
+    font-size: 13.5px;
+    color: var(--color-text-muted);
+}
+
+.leaderboard-stat-item strong {
+    color: var(--color-text-main);
+}
+
+.leaderboard-elo-pill {
+    font-family: var(--font-en);
+    font-weight: 900;
+    font-size: 15px;
+    color: var(--color-primary);
+    text-align: center;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    background: var(--clay-inset-bg);
+    box-shadow: var(--clay-inset-shadow);
+}
+
+/* --------------------------------------------------------------------------
+   ریسپانسیو صفحه اصلی
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .hero-content {
+        align-items: center;
+    }
+    .hero-pill-badges {
+        justify-content: center;
+    }
+    .hero-cta-group {
+        justify-content: center;
+    }
+    .hero-stats-row {
+        width: 100%;
+        max-width: 500px;
+    }
+    .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+        gap: 20px;
+    }
+    .leaderboard-row {
+        grid-template-columns: 50px 1.8fr 1fr 100px;
+        gap: 10px;
+    }
+    .leaderboard-stat-matches {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-section {
+        padding: 36px 20px;
+    }
+    .hero-title {
+        font-size: 30px;
+    }
+    .hero-description {
+        font-size: 14.5px;
+    }
+    .hero-stats-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+    .podium-wrapper {
+        gap: 10px;
+    }
+    .podium-avatar-wrapper .clay-avatar {
+        width: 58px;
+        height: 58px;
+    }
+    .podium-rank-1 .podium-avatar-wrapper .clay-avatar {
+        width: 72px;
+        height: 72px;
+    }
+    .podium-pillar {
+        padding-top: 10px;
+    }
+    .podium-pillar-num {
+        font-size: 32px;
+    }
+    .leaderboard-row {
+        grid-template-columns: 40px 1fr 80px;
+        padding: 10px 14px;
+    }
+    .leaderboard-stat-winrate {
+        display: none;
+    }
+}

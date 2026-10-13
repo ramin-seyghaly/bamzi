@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="پلتفرم بازی‌های آنلاین و چندنفره بامزی (Bamzi) - تجربه شطرنج، دوز، چهار در یک خط، ابزارهای گیمینگ و رقابت در لیدربورد با استایل سه‌بعدی Claymorphism">
+    <meta name="keywords" content="بازی آنلاین, بازی دو نفره, شطرنج آنلاین, دوز, چهار در یک خط, ریتینگ شطرنج, لیدربورد, بامزی, bamzi">
+    <title>{% block title %}بامزی (Bamzi) | پلتفرم بازی‌های آنلاین و چندنفره{% endblock %}</title>
+
+    <!-- آیکون سایت -->
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/badges/trophy-gold.svg' %}">
+
+    <!-- فایل‌های استایل سیستم کلیمورفیسم -->
+    <link rel="stylesheet" href="{% static 'css/design-system.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components.css' %}">
+    {% block extra_css %}{% endblock %}
+
+    <!-- اسکریپت مدیریت تم -->
+    <script src="{% static 'js/theme.js' %}"></script>
+</head>
+<body>
+    <!-- ====================================================================
+         هدر شناور کلیمورفیک (Floating Sticky Navbar)
+         ==================================================================== -->
+    <div class="bamzi-header-wrapper">
+        <div class="bamzi-container">
+            <header class="bamzi-navbar">
+                <!-- لوگوی برند بامزی -->
+                <a href="/" class="navbar-brand" title="صفحه اصلی بامزی">
+                    <img src="{% static 'images/logo/bamzi-logo.svg' %}" alt="بامزی | Bamzi Games" width="160" height="46">
+                </a>
+
+                <!-- منوی ناوبری دسکتاپ -->
+                <nav aria-label="منوی اصلی وبسایت">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#online-games" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                بازی‌های آنلاین
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#offline-games" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                                بازی‌های آفلاین
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#tools" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                                </svg>
+                                جعبه‌ابزار
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#leaderboard" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                                    <path d="M4 22h16"></path>
+                                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                                </svg>
+                                جدول برترین‌ها
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- بخش اقدامات: سوئیچ تم و ورود/ثبت‌نام -->
+                <div class="navbar-actions">
+                    <!-- دکمه سوئیچ تم روز و شب -->
+                    <button type="button" class="clay-theme-toggle" data-action="toggle-theme" title="تغییر حالت شب و روز" aria-label="تغییر تم">
+                        <!-- آیکون خورشید -->
+                        <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <!-- آیکون ماه -->
+                        <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- دکمه‌های عضویت و ورود -->
+                    <div class="navbar-auth-group">
+                        {% if user.is_authenticated %}
+                            <div class="clay-avatar" style="width: 42px; height: 42px;" title="{{ user.username }}">
+                                <img src="{% static 'images/avatars/avatar-1.svg' %}" alt="{{ user.username }}">
+                            </div>
+                            <span style="font-weight: 700; font-size: 14px;">{{ user.username }}</span>
+                            <a href="/api/accounts/profile/" class="clay-btn clay-btn-secondary clay-btn-sm">پروفایل</a>
+                        {% else %}
+                            <a href="#login-modal" class="clay-btn clay-btn-secondary clay-btn-sm" id="navLoginBtn">ورود</a>
+                            <a href="#register-modal" class="clay-btn clay-btn-primary clay-btn-sm" id="navRegisterBtn">ثبت‌نام</a>
+                        {% endif %}
+                    </div>
+
+                    <!-- دکمه همبرگری موبایل -->
+                    <button type="button" class="mobile-menu-btn" id="mobileMenuToggle" aria-label="باز کردن منو" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- دراور منوی بازشونده موبایل -->
+            <div class="mobile-nav-drawer" id="mobileNavDrawer">
+                <a href="#online-games" class="nav-link">بازی‌های آنلاین</a>
+                <a href="#offline-games" class="nav-link">بازی‌های آفلاین</a>
+                <a href="#tools" class="nav-link">جعبه‌ابزار بازی</a>
+                <a href="#leaderboard" class="nav-link">جدول برترین‌ها</a>
+                <div class="navbar-auth-group">
+                    {% if not user.is_authenticated %}
+                        <a href="#login-modal" class="clay-btn clay-btn-secondary">ورود به حساب کاربری</a>
+                        <a href="#register-modal" class="clay-btn clay-btn-primary">ثبت‌نام بازیکن جدید</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         محتوای اصلی صفحات (Main Body)
+         ==================================================================== -->
+    <main id="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ====================================================================
+         فوتر کلیمورفیک (Clay Footer)
+         ==================================================================== -->
+    <footer class="bamzi-footer">
+        <div class="bamzi-container">
+            <div class="footer-grid">
+                <!-- ستون درباره ما -->
+                <div class="footer-about">
+                    <a href="/" class="footer-logo">
+                        <img src="{% static 'images/logo/bamzi-logo.svg' %}" alt="بامزی" width="160" height="46">
+                    </a>
+                    <p>
+                        پلتفرم بازی‌های آنلاین چندنفره و فکری **بامزی**؛ محلی برای به چالش کشیدن هوش و مهارت با دوستان و رقابت در بازی‌های شطرنج، دوز و چهار در یک خط بر اساس ریتینگ حرفه‌ای ELO.
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="#" class="social-clay-btn" title="تلگرام بامزی" aria-label="تلگرام">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.5 2L2 9.5L9.5 13L13 20.5L21.5 2Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a href="#" class="social-clay-btn" title="دیسکورد بازیکنان" aria-label="دیسکورد">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 6h0a14.5 14.5 0 0 0-4-1.2 11.2 11.2 0 0 0-.5 1.1 13.6 13.6 0 0 0-4 0 11.2 11.2 0 0 0-.5-1.1A14.5 14.5 0 0 0 5 6a15.8 15.8 0 0 0-2 11.8 14.7 14.7 0 0 0 4.5 2.2 11 11 0 0 0 1-1.6 9.6 9.6 0 0 1-1.6-.8l.4-.3a10.4 10.4 0 0 0 9.4 0l.4.3a9.6 9.6 0 0 1-1.6.8 11 11 0 0 0 1 1.6 14.7 14.7 0 0 0 4.5-2.2A15.8 15.8 0 0 0 18 6z" stroke-width="1.8"/></svg>
+                        </a>
+                        <a href="#" class="social-clay-btn" title="گیت‌هاب پروژه" aria-label="گیت‌هاب">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ستون لینک‌های سریع -->
+                <div>
+                    <h4 class="footer-column-title">ناوبری و دسترسی</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="/">صفحه اصلی</a></li>
+                        <li><a href="#online-games">بازی‌های چندنفره آنلاین</a></li>
+                        <li><a href="#offline-games">بازی‌های تک‌نفره و آفلاین</a></li>
+                        <li><a href="#tools">جعبه‌ابزار گیمرها</a></li>
+                        <li><a href="#leaderboard">جدول برترین‌ها (لیدربورد)</a></li>
+                    </ul>
+                </div>
+
+                <!-- ستون بازی‌های شاخص -->
+                <div>
+                    <h4 class="footer-column-title">بازی‌های محبوب</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#online-games">شطرنج آنلاین (Chess)</a></li>
+                        <li><a href="#online-games">چهار در یک خط (Connect 4)</a></li>
+                        <li><a href="#online-games">دوز ۳×۳ (Tic-Tac-Toe)</a></li>
+                        <li><a href="#offline-games">سودوکو کلاسیک</a></li>
+                        <li><a href="#offline-games">مین‌یاب نوستالژیک</a></li>
+                    </ul>
+                </div>
+
+                <!-- ستون خبرنامه و اطلاع‌رسانی -->
+                <div class="footer-newsletter">
+                    <h4 class="footer-column-title">اطلاع از بازی‌های جدید</h4>
+                    <p>ایمیل خود را ثبت کنید تا از تورنمنت‌ها و آپدیت بازی‌های جدید بامزی مطلع شوید:</p>
+                    <form id="footerNewsletterForm" class="newsletter-form">
+                        <input type="email" required placeholder="ایمیل شما..." class="newsletter-input" aria-label="ایمیل برای خبرنامه">
+                        <button type="submit" class="clay-btn clay-btn-primary clay-btn-sm">ثبت</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- کپی‌رایت پایین -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © ۲۰۲۶ پلتفرم بازی‌های آنلاین **بامزی (Bamzi)**. تمامی حقوق محفوظ است.
+                </div>
+                <div class="footer-badges">
+                    <span class="clay-badge clay-badge-offline">نسخه ۱.۰.۰</span>
+                    <span class="clay-badge clay-badge-online"><span class="pulse-dot"></span> سرورها فعال</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- مودال‌های ورود، ثبت‌نام، اتاق بازی و جعبه‌ابزار -->
+    {% include 'includes/auth_modals.html' %}
+    {% include 'includes/room_modal.html' %}
+    {% include 'includes/tools_modal.html' %}
+
+    <!-- اسکریپت‌های عمومی -->
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

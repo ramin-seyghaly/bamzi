@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="av1-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8E44EB" />
+      <stop offset="100%" stop-color="#49108B" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="36" fill="url(#av1-bg)" />
+  <!-- Gamer Head & Headphones -->
+  <circle cx="50" cy="46" r="22" fill="#FED7AA" />
+  <path d="M28 42 C28 26 72 26 72 42" fill="none" stroke="#F59E0B" stroke-width="7" stroke-linecap="round"/>
+  <rect x="23" y="40" width="10" height="18" rx="5" fill="#F59E0B" />
+  <rect x="67" y="40" width="10" height="18" rx="5" fill="#F59E0B" />
+  <!-- Hair & Face -->
+  <path d="M33 38 C38 30 62 30 67 38 C62 34 38 34 33 38 Z" fill="#4B5563" />
+  <circle cx="43" cy="46" r="2.5" fill="#1F2937" />
+  <circle cx="57" cy="46" r="2.5" fill="#1F2937" />
+  <path d="M46 54 Q50 58 54 54" stroke="#1F2937" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Hoodie Body -->
+  <path d="M25 90 C25 72 38 70 50 70 C62 70 75 72 75 90 Z" fill="#F3F8FF" />
+</svg>

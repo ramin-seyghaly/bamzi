@@ -1,0 +1,7 @@
+- `[ ]` Implement Theme Colors (Color.kt) and Typography (Type.kt) matching web app design system
+- `[ ]` Implement Claymorphic Modifiers (ClayModifiers.kt) for card, button, and inset shadows
+- `[ ]` Implement BamziTheme (Theme.kt) supporting Light and Dark modes
+- `[ ]` Implement ClayButton and its Compose Previews
+- `[ ]` Implement ClayCard and its Compose Previews
+- `[ ]` Implement ClayTextField and its Compose Previews
+- `[ ]` Build and verify with Gradle assembleDebug

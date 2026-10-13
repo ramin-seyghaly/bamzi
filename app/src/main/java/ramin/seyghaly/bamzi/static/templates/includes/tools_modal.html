@@ -1,0 +1,100 @@
+<!-- مودال تعاملی جعبه‌ابزار گیمرها (Interactive Gamer Tools Modal) -->
+<div class="clay-modal-backdrop" id="toolsModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="toolsModalTitle">
+    <div class="clay-modal" style="max-width: 500px;">
+        <button type="button" class="clay-modal-close" data-close-modal="toolsModalBackdrop" aria-label="بستن پنجره">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+
+        <div class="clay-modal-header">
+            <div class="clay-badge clay-badge-tool" style="margin-bottom: 8px;">
+                <span>🛠️ جعبه‌ابزار بازی</span>
+            </div>
+            <h3 class="clay-modal-title" id="toolsModalTitle">ابزار بازی بامزی</h3>
+            <p class="clay-modal-subtitle" id="toolsModalSubtitle">ابزار کاربردی بازی‌های فکری و دورهمی</p>
+        </div>
+
+        <!-- محتوای تعاملی ویجت ۱: تاس سه‌بعدی -->
+        <div id="toolWidgetDice" class="tool-widget-container" style="display: none;">
+            <div class="dice-cube" id="diceCube">
+                <div class="dice-dot" id="dot1"></div>
+                <div class="dice-dot" id="dot2"></div>
+                <div class="dice-dot" id="dot3"></div>
+                <div class="dice-dot" id="dot4"></div>
+                <div class="dice-dot" id="dot5"></div>
+                <div class="dice-dot" id="dot6"></div>
+                <div class="dice-dot" id="dot7"></div>
+                <div class="dice-dot" id="dot8"></div>
+                <div class="dice-dot" id="dot9"></div>
+            </div>
+            <p style="font-weight: 800; font-size: 18px; color: var(--color-primary);" id="diceResultText">برای پرتاب تاس کلیک کنید</p>
+            <button type="button" id="btnRollDice" class="clay-btn clay-btn-primary clay-btn-lg" style="width: 100%;">
+                پرتاب تاس 🎲
+            </button>
+        </div>
+
+        <!-- محتوای تعاملی ویجت ۲: شیر یا خط -->
+        <div id="toolWidgetCoin" class="tool-widget-container" style="display: none;">
+            <div class="coin-disc" id="coinDisc">
+                <span id="coinText">شیر</span>
+                <span style="font-size: 11px; opacity: 0.8; font-family: var(--font-en); font-weight: 700;">HEADS</span>
+            </div>
+            <p style="font-weight: 800; font-size: 18px; color: var(--color-primary);" id="coinResultText">سکه را بچرخانید!</p>
+            <button type="button" id="btnFlipCoin" class="clay-btn clay-btn-primary clay-btn-lg" style="width: 100%;">
+                پرتاب سکه 🪙
+            </button>
+        </div>
+
+        <!-- محتوای تعاملی ویجت ۳: تایمر مسابقه -->
+        <div id="toolWidgetTimer" class="tool-widget-container" style="display: none;">
+            <div class="clay-inset timer-display" id="timerDisplay">03:00</div>
+            <div style="display: flex; gap: 8px; width: 100%; justify-content: center;">
+                <button type="button" class="clay-btn clay-btn-secondary clay-btn-sm timer-preset-btn" data-time="60">۱ دقیقه</button>
+                <button type="button" class="clay-btn clay-btn-secondary clay-btn-sm timer-preset-btn active" data-time="180">۳ دقیقه</button>
+                <button type="button" class="clay-btn clay-btn-secondary clay-btn-sm timer-preset-btn" data-time="300">۵ دقیقه</button>
+            </div>
+            <div style="display: flex; gap: 12px; width: 100%;">
+                <button type="button" id="btnTimerStart" class="clay-btn clay-btn-primary" style="flex: 2;">
+                    شروع تایمر ⏱️
+                </button>
+                <button type="button" id="btnTimerReset" class="clay-btn clay-btn-secondary" style="flex: 1;">
+                    ریست
+                </button>
+            </div>
+        </div>
+
+        <!-- محتوای تعاملی ویجت ۴: اسکوربورد -->
+        <div id="toolWidgetScoreboard" class="tool-widget-container" style="display: none;">
+            <div class="scoreboard-box">
+                <div class="clay-inset score-player">
+                    <span style="font-weight: 700; font-size: 14px;">بازیکن ۱</span>
+                    <div class="score-value" id="scoreP1">0</div>
+                    <div class="score-btn-group">
+                        <button type="button" class="clay-btn clay-btn-primary score-btn" id="btnP1Plus">+</button>
+                        <button type="button" class="clay-btn clay-btn-secondary score-btn" id="btnP1Minus">-</button>
+                    </div>
+                </div>
+
+                <span style="font-family: var(--font-en); font-weight: 900; font-size: 20px; color: var(--color-text-muted);">VS</span>
+
+                <div class="clay-inset score-player">
+                    <span style="font-weight: 700; font-size: 14px;">بازیکن ۲</span>
+                    <div class="score-value" id="scoreP2">0</div>
+                    <div class="score-btn-group">
+                        <button type="button" class="clay-btn clay-btn-primary score-btn" id="btnP2Plus">+</button>
+                        <button type="button" class="clay-btn clay-btn-secondary score-btn" id="btnP2Minus">-</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="btnResetScores" class="clay-btn clay-btn-secondary clay-btn-sm" style="margin-top: 6px;">
+                صفر کردن امتیازها 🔄
+            </button>
+        </div>
+
+        <div class="clay-modal-footer">
+            <span style="font-size: 12.5px;">ابزارهای سبک و سریع برای داوری و برگزاری مسابقات</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,521 @@
+/* ==========================================================================
+   بامزی (Bamzi) - کامپوننت‌های هدر، فوتر و المان‌های ناوبری (Components)
+   استایل: Claymorphism با پالت #F3F8FF, #7E30E1, #49108B
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   هدر و نوبار شناور کلیمورفیک (Floating Clay Navbar)
+   -------------------------------------------------------------------------- */
+.bamzi-header-wrapper {
+    position: sticky;
+    top: 16px;
+    z-index: 1000;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.bamzi-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background: var(--clay-card-bg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--clay-card-shadow), var(--clay-card-inset);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all var(--transition-base);
+}
+
+/* لوگو در هدر */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: transform var(--transition-base);
+}
+
+.navbar-brand:hover {
+    transform: scale(1.03);
+}
+
+.navbar-brand img {
+    height: 44px;
+    width: auto;
+    display: block;
+}
+
+/* منوی ناوبری دسکتاپ */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 14.5px;
+    color: var(--color-text-main);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+    background-color: rgba(126, 48, 225, 0.08);
+    transform: translateY(-1px);
+}
+
+.nav-link.active {
+    color: var(--color-primary);
+    background: var(--clay-btn-secondary-bg);
+    box-shadow: var(--clay-btn-secondary-shadow);
+    font-weight: 700;
+}
+
+.nav-link svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    opacity: 0.85;
+}
+
+/* بخش اقدامات کاربری سمت چپ هدر (تم + ورود / عضویت) */
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-auth-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* منوی موبایل (Hamburger Button) */
+.mobile-menu-btn {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--clay-btn-secondary-bg);
+    box-shadow: var(--clay-btn-secondary-shadow);
+    border: 1px solid var(--color-border);
+    color: var(--color-deep);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-base);
+}
+
+[data-theme="dark"] .mobile-menu-btn {
+    color: var(--color-text-main);
+}
+
+.mobile-menu-btn:hover {
+    transform: scale(1.05);
+}
+
+/* دراور یا منوی بازشونده موبایل */
+.mobile-nav-drawer {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 14px;
+    padding: 20px;
+    background: var(--clay-card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--clay-card-shadow), var(--clay-card-inset);
+    border: 1px solid var(--color-border);
+    animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-nav-drawer.open {
+    display: flex;
+}
+
+.mobile-nav-drawer .nav-link {
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 15px;
+}
+
+.mobile-nav-drawer .navbar-auth-group {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-border);
+}
+
+.mobile-nav-drawer .navbar-auth-group .clay-btn {
+    width: 100%;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   فوتر کلیمورفیک (Clay Footer)
+   -------------------------------------------------------------------------- */
+.bamzi-footer {
+    margin-top: 90px;
+    padding: 60px 0 30px;
+    background: var(--clay-card-bg);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 -10px 30px rgba(73, 16, 139, 0.04),
+                var(--clay-card-inset);
+    position: relative;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+/* ستون درباره بامزی */
+.footer-about {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-about .footer-logo img {
+    height: 48px;
+    width: auto;
+}
+
+.footer-about p {
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* شبکه‌های اجتماعی کلیمورفیک */
+.footer-social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.social-clay-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-full);
+    background: var(--clay-btn-secondary-bg);
+    box-shadow: var(--clay-btn-secondary-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: transform var(--transition-base), color var(--transition-fast);
+}
+
+.social-clay-btn:hover {
+    transform: translateY(-3px) scale(1.1);
+    color: var(--color-deep-light);
+}
+
+.social-clay-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+}
+
+/* ستون‌های لینک */
+.footer-column-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--color-deep);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+[data-theme="dark"] .footer-column-title {
+    color: var(--color-text-main);
+}
+
+.footer-column-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 34px;
+    height: 3px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(90deg, var(--color-primary), transparent);
+}
+
+.footer-links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.footer-links-list a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer-links-list a:hover {
+    color: var(--color-primary);
+    transform: translateX(-4px);
+}
+
+/* ستون عضویت در خبرنامه و اعلان‌ها */
+.footer-newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer-newsletter p {
+    font-size: 13.5px;
+    color: var(--color-text-muted);
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 8px;
+}
+
+.newsletter-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 12px 18px;
+    font-family: var(--font-fa);
+    font-size: 13.5px;
+    border-radius: var(--radius-full);
+    background-color: var(--clay-inset-bg);
+    box-shadow: var(--clay-inset-shadow);
+    color: var(--color-text-main);
+}
+
+.newsletter-input::placeholder {
+    color: var(--color-text-light);
+}
+
+/* نوار کپی‌رایت پایین فوتر */
+.footer-bottom {
+    padding-top: 28px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-copyright {
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+.footer-badges {
+    display: flex;
+    gap: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   مودال‌های ورود و ثبت‌نام کلیمورفیک (Clay Auth Modals)
+   -------------------------------------------------------------------------- */
+.clay-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background-color: rgba(18, 9, 36, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.clay-modal-backdrop.active {
+    display: flex;
+    opacity: 1;
+}
+
+.clay-modal {
+    width: 100%;
+    max-width: 440px;
+    padding: 36px 32px;
+    background: var(--clay-card-bg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--clay-card-shadow), var(--clay-card-inset);
+    border: 1px solid var(--color-border);
+    position: relative;
+    transform: scale(0.92) translateY(10px);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.clay-modal-backdrop.active .clay-modal {
+    transform: scale(1) translateY(0);
+}
+
+.clay-modal-close {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background: var(--clay-btn-secondary-bg);
+    box-shadow: var(--clay-btn-secondary-shadow);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    transition: transform var(--transition-base), color var(--transition-fast);
+}
+
+.clay-modal-close:hover {
+    transform: scale(1.1);
+    color: var(--color-danger);
+}
+
+.clay-modal-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.clay-modal-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--color-deep);
+    margin-bottom: 6px;
+}
+
+[data-theme="dark"] .clay-modal-title {
+    color: var(--color-text-main);
+}
+
+.clay-modal-subtitle {
+    font-size: 13.5px;
+    color: var(--color-text-muted);
+}
+
+.clay-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+    text-align: right;
+}
+
+.clay-form-label {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.clay-form-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 13px 18px;
+    font-family: var(--font-fa);
+    font-size: 14px;
+    border-radius: var(--radius-md);
+    background-color: var(--clay-inset-bg);
+    box-shadow: var(--clay-inset-shadow);
+    color: var(--color-text-main);
+    transition: box-shadow var(--transition-fast);
+}
+
+.clay-form-input:focus {
+    box-shadow: var(--clay-inset-shadow), 0 0 0 2px var(--color-primary);
+}
+
+.clay-modal-footer {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 13.5px;
+    color: var(--color-text-muted);
+}
+
+.clay-modal-footer a {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.clay-modal-footer a:hover {
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   ریسپانسیو (Responsive Media Queries)
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+    .navbar-nav {
+        display: none;
+    }
+    .mobile-menu-btn {
+        display: flex;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 640px) {
+    .bamzi-navbar {
+        padding: 10px 16px;
+    }
+    .navbar-brand img {
+        height: 38px;
+    }
+    .navbar-auth-group .clay-btn {
+        padding: 7px 14px;
+        font-size: 12.5px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+}

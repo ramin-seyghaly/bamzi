@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="av2-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="36" fill="url(#av2-bg)" />
+  <circle cx="50" cy="46" r="22" fill="#FBCFE8" />
+  <!-- Hair (Cool Gamer Cap) -->
+  <path d="M30 38 Q50 22 70 38 L78 40 L70 44 Z" fill="#F43F5E" />
+  <circle cx="43" cy="47" r="2.5" fill="#1F2937" />
+  <circle cx="57" cy="47" r="2.5" fill="#1F2937" />
+  <path d="M46 55 Q50 59 54 55" stroke="#1F2937" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Jacket -->
+  <path d="M25 90 C25 72 38 70 50 70 C62 70 75 72 75 90 Z" fill="#FDE047" />
+</svg>

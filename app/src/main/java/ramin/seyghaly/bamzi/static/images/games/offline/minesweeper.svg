@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <defs>
+    <linearGradient id="mine-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#311B92" />
+      <stop offset="100%" stop-color="#1A237E" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="200" fill="url(#mine-bg)" />
+  <!-- Clay Mine Bomb -->
+  <g transform="translate(150, 105)">
+    <!-- Spikes -->
+    <line x1="-50" y1="0" x2="50" y2="0" stroke="#1E1B4B" stroke-width="10" stroke-linecap="round"/>
+    <line x1="0" y1="-50" x2="0" y2="50" stroke="#1E1B4B" stroke-width="10" stroke-linecap="round"/>
+    <line x1="-35" y1="-35" x2="35" y2="35" stroke="#1E1B4B" stroke-width="10" stroke-linecap="round"/>
+    <line x1="-35" y1="35" x2="35" y2="-35" stroke="#1E1B4B" stroke-width="10" stroke-linecap="round"/>
+    <!-- Central Sphere -->
+    <circle cx="0" cy="0" r="42" fill="#18181B" />
+    <circle cx="-12" cy="-12" r="10" fill="#3F3F46" />
+    <!-- Blinking Red LED -->
+    <circle cx="0" cy="0" r="9" fill="#EF4444" />
+    <circle cx="0" cy="0" r="4" fill="#FCA5A5" />
+  </g>
+  <!-- Flag Badge -->
+  <g transform="translate(45, 45)">
+    <rect width="40" height="40" rx="12" fill="#7E30E1" />
+    <!-- Flag symbol -->
+    <polygon points="12,12 28,18 12,24" fill="#EF4444" />
+    <line x1="12" y1="12" x2="12" y2="30" stroke="#FFF" stroke-width="2.5" />
+  </g>
+  <!-- Number 3 Badge -->
+  <g transform="translate(215, 125)">
+    <rect width="40" height="40" rx="12" fill="#0D9488" />
+    <text x="20" y="27" font-family="'Outfit', sans-serif" font-weight="900" font-size="20" fill="#FFF" text-anchor="middle">3</text>
+  </g>
+</svg>
